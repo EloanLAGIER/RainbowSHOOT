@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Alien : MonoBehaviour
 {
@@ -19,9 +20,14 @@ public class Alien : MonoBehaviour
     public List<Material> materials;
 
 
+    public AudioSource shootSound;
+    public AudioSource hitSound;
+    public AudioSource deathSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        timerShoot = Random.Range(0f, 1f);
         GetComponentInChildren<Renderer>().material = materials[Random.Range(0,6)];
     }
 
@@ -29,7 +35,7 @@ public class Alien : MonoBehaviour
     void Update() {
         
         timerSens+= Time.deltaTime;
-        timerShoot += Time.deltaTime;
+        
 
 
         position = transform.position;
@@ -55,20 +61,24 @@ public class Alien : MonoBehaviour
         }
 
 
-      
-        
+        timerShoot += Time.deltaTime;
+
 
         transform.position = position;
 
 
         if (timerShoot >= ecartShoot)
         {
+            shootSound.Play();
             Instantiate(tir, transform.position, Quaternion.identity);
             timerShoot = 0f;
         }
 
 
         if (life <=0){
+            GameObject.Find("UIManager").GetComponent<UIManager>().score += Random.Range(100, 200);
+            GameObject.Find("Score").GetComponent<Text>().text = GameObject.Find("UIManager").GetComponent<UIManager>().score.ToString();
+            GameObject.Find("AUDIOMANAGER").GetComponent<AudioSource>().Play();
             GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -=1;
             Destroy(this.gameObject);
         }
