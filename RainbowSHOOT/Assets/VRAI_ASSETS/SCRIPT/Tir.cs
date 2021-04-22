@@ -24,7 +24,6 @@ public class Tir : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision c){
-	Debug.Log("collision");
     if (c.gameObject.tag == "Alien" ){
 	c.gameObject.GetComponent<Alien>().life -=12;
 
