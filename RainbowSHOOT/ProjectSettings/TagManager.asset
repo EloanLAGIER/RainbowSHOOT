@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Alien
-  - tirAlien
   layers:
   - Default
   - TransparentFX

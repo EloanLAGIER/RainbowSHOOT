@@ -18,7 +18,7 @@ public class TirAlien : MonoBehaviour
         position = transform.position;
 	position.z -= vitesse * Time.deltaTime;
 	transform.position = position;
-	if(position.z <=-10f){
+	if(position.z >=40f){
         	Destroy(this.gameObject);	
 	} 
     }

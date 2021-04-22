@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class SpaceShip : MonoBehaviour
 {
     Vector3 position;
-    public float life = 100;
     public float vitesse = 1f;
     public float timerShoot = 1f;
     public float lastShoot = 0f;
     public GameObject Tir;
-    public Text vie;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,16 +32,5 @@ public class SpaceShip : MonoBehaviour
 		}
 	}
 		
-    }
-
-
-    void OnCollisionEnter(Collision c)
-    {
-        Debug.Log("touché");
-        if(c.gameObject.tag == "tirAlien")
-        {
-            life -= 12;
-            vie.text = "VIE :" + life.ToString();
-        }
     }
 }
