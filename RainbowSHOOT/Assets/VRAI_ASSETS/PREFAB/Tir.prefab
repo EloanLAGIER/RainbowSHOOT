@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d881ddadbd8245c44921c31dbf59ff17, type: 2}
+  - {fileID: 2100000, guid: 844e3f722d3fae248b4cb1a4364e3d3a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -139,8 +139,8 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.09
-  m_Height: 0.28
-  m_Direction: 2
+  m_Height: 7.61
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8372775528852573548
 Rigidbody:
