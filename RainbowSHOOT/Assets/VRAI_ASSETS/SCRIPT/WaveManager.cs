@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using PathCreation;
 
 
@@ -11,6 +12,7 @@ public class WaveManager : MonoBehaviour
     public bool game;
     public int ennemies;
     public GameObject alien;
+    public Text waves;
 
     public PathCreator pathCreator;
 
@@ -28,6 +30,7 @@ public class WaveManager : MonoBehaviour
         {
             waveCount += 1;
             GenerateNewWave();
+            waves.text = " vagues : " + waveCount;
         }
     }
 

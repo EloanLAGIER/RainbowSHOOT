@@ -39,7 +39,7 @@ public class Alien : MonoBehaviour
     void Update() {
         
 
-        timerShoot += Time.deltaTime;
+        
 
 
         position = transform.position;
@@ -60,7 +60,7 @@ public class Alien : MonoBehaviour
 
 
 
-
+        timerShoot += Time.deltaTime;
         distanceTravelled += vitesse * Time.deltaTime;
         transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
 

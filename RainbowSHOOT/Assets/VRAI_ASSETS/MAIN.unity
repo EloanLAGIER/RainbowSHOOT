@@ -956,7 +956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   go: {fileID: 1863808916}
-  scoreT: {fileID: 193182837}
+  scoreT: {fileID: 1104241399}
 --- !u!4 &1345511452
 Transform:
   m_ObjectHideFlags: 0
@@ -1470,12 +1470,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 250
+    m_FontSize: 175
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 300
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -1733,6 +1733,7 @@ MonoBehaviour:
   game: 1
   ennemies: 0
   alien: {fileID: 8187985831510388122, guid: 9530ed22e07b3ca4488abf3db2026bde, type: 3}
+  waves: {fileID: 787652241}
   pathCreator: {fileID: 1577100398}
 --- !u!4 &2118971557
 Transform:
