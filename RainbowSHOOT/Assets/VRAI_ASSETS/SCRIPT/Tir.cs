@@ -25,8 +25,10 @@ public class Tir : MonoBehaviour
 
     void OnCollisionEnter(Collision c){
     if (c.gameObject.tag == "Alien" ){
-	c.gameObject.GetComponent<Alien>().life -=12;
 
+	    c.gameObject.GetComponent<Alien>().life -=12;
+        c.gameObject.GetComponent<Alien>().hitSound.Play();
+        Destroy(this.gameObject);
 	}
 }
     
