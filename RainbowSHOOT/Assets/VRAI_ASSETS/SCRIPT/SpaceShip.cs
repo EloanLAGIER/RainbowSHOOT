@@ -19,11 +19,15 @@ public class SpaceShip : MonoBehaviour
     public AudioSource hitBruit;
     public AudioSource GameOver;
 
+
+    public LaserScript laser;
+    public int incLaser;
+
     private bool rotate; // pour savoir si il �tait inclin�
     // Start is called before the first frame update
     void Start()
     {
-
+        incLaser = 0;
     }
 
     // Update is called once per frame
@@ -73,8 +77,9 @@ public class SpaceShip : MonoBehaviour
             if (lastShoot >= timerShoot)
             {
                 tirBruit.Play();
-
-                Instantiate(Tir, transform.position, Quaternion.identity);
+                incLaser = ((incLaser + 1) % laser.TailleList);
+                GameObject g = Instantiate(Tir, transform.position, Quaternion.identity);
+                g.GetComponent<TirVaisseau>().ChangeMaterial(laser.couleurs[incLaser]);
                 lastShoot = 0f;
             }
         }

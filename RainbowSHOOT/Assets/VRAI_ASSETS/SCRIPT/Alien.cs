@@ -67,9 +67,11 @@ public class Alien : MonoBehaviour
 
         if (timerShoot >= ecartShoot)
         {
-            shootSound.Play();
-            Instantiate(tir, transform.position, Quaternion.identity);
             timerShoot = 0f;
+            shootSound.Play();
+            GameObject t = Instantiate(tir, transform.position, Quaternion.identity);
+            t.GetComponent<TirAlien>().ChangeMaterial(GetComponentInChildren<Renderer>().material);
+            
         }
 
 
