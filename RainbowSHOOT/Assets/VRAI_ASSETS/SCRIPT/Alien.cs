@@ -27,12 +27,15 @@ public class Alien : MonoBehaviour
     public PathCreator pathCreator;
     public float distanceTravelled;
 
+    public int r;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        r = Random.Range(0, 6);
         timerShoot = Random.Range(0f, 1f);
-        GetComponentInChildren<Renderer>().material = materials[Random.Range(0,6)];
+        GetComponentInChildren<Renderer>().material = materials[r];
     }
 
     // Update is called once per frame
@@ -70,7 +73,7 @@ public class Alien : MonoBehaviour
             timerShoot = 0f;
             shootSound.Play();
             GameObject t = Instantiate(tir, transform.position, Quaternion.identity);
-            t.GetComponent<TirAlien>().ChangeMaterial(GetComponentInChildren<Renderer>().material);
+            t.GetComponent<TirAlien>().ChangeMaterial(materials[r]);
             
         }
 

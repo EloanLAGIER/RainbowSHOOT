@@ -19,14 +19,16 @@ public class SpaceShip : MonoBehaviour
     public AudioSource hitBruit;
     public AudioSource GameOver;
 
+    public Animator anim;
 
     public LaserScript laser;
     public int incLaser;
-
+    public Transform laserPointeur;
     private bool rotate; // pour savoir si il �tait inclin�
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         incLaser = 0;
     }
 
@@ -48,7 +50,10 @@ public class SpaceShip : MonoBehaviour
 
         rotation.z = Mathf.Clamp(rotation.z, -0.5f, 0.5f);
 
-
+        if (Input.GetKeyDown("e"))
+        {
+            anim.SetTrigger("armON");
+        }
         if ((Input.GetAxis("Horizontal") == 1f) || (Input.GetAxis("Horizontal") == -1f))
         {
             rotate = true;
@@ -78,7 +83,10 @@ public class SpaceShip : MonoBehaviour
             {
                 tirBruit.Play();
                 incLaser = ((incLaser + 1) % laser.TailleList);
-                GameObject g = Instantiate(Tir, transform.position, Quaternion.identity);
+                
+
+                GameObject g = Instantiate(Tir, laserPointeur.position, Quaternion.identity);
+                
                 g.GetComponent<TirVaisseau>().ChangeMaterial(laser.couleurs[incLaser]);
                 lastShoot = 0f;
             }

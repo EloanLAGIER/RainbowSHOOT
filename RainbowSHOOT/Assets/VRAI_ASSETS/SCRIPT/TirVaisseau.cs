@@ -6,6 +6,7 @@ public class TirVaisseau : Tir
 {
     Vector3 position;
     public float vitesse;
+    public bool diamentcreated;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +16,9 @@ public class TirVaisseau : Tir
     // Update is called once per frame
     void Update()
     {
-        position = transform.position;
-	position.z += vitesse * Time.deltaTime;
-	transform.position = position;
-	if(position.z >=40f){
+
+	    transform.position += transform.forward * vitesse * Time.deltaTime;
+	    if(position.z >=40f){
         	Destroy(this.gameObject);	
 	} 
     }

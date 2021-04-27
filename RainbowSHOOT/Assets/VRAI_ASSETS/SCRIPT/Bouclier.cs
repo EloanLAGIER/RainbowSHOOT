@@ -47,7 +47,13 @@ public class Bouclier : MonoBehaviour
             {
                 if (collision.gameObject.GetComponent<Tir>().mat == currentMat)
                 {
+                    Debug.Log(collision.gameObject.GetComponent<Tir>().mat + " == " + currentMat);
                     Destroy(collision.gameObject);
+                    Debug.Break();
+                }
+                else
+                {
+                    Debug.Log(collision.gameObject.GetComponent<Tir>().mat + " != " + currentMat);
                 }
             }
         }

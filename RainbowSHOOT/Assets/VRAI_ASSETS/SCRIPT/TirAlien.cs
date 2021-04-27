@@ -10,7 +10,6 @@ public class TirAlien : Tir
     // Start is called before the first frame update
     void Start()
     {
-        mat = "jaune";
     }
 
     // Update is called once per frame
