@@ -20,7 +20,7 @@ public class TirVaisseau : Tir
 	    transform.position += transform.forward * vitesse * Time.deltaTime;
 	    if(position.z >=40f){
         	Destroy(this.gameObject);	
-	} 
+	    } 
     }
 
     void OnCollisionEnter(Collision c){

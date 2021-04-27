@@ -104,6 +104,7 @@ MonoBehaviour:
   deathSound: {fileID: 8296633772217783371}
   pathCreator: {fileID: 0}
   distanceTravelled: 0
+  r: 0
 --- !u!54 &8187985831510388118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,7 +146,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a9dd30733171e6a40a2ae904e0f22227, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -241,7 +242,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 31d66f6b89878f145a5f7225b55325c8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -337,7 +338,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 59d9d538a47d3904c9b6e71cc49d7260, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0

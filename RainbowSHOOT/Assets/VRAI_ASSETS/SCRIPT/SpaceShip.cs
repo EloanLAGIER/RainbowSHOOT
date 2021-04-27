@@ -19,8 +19,12 @@ public class SpaceShip : MonoBehaviour
     public AudioSource hitBruit;
     public AudioSource GameOver;
 
+
+    public AudioClip diament;
+    public AudioClip brut;
     public Animator anim;
 
+    public float f;
     public LaserScript laser;
     public int incLaser;
     public Transform laserPointeur;
@@ -28,7 +32,7 @@ public class SpaceShip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        
         incLaser = 0;
     }
 
@@ -50,10 +54,20 @@ public class SpaceShip : MonoBehaviour
 
         rotation.z = Mathf.Clamp(rotation.z, -0.5f, 0.5f);
 
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
+            
             anim.SetTrigger("armON");
+            
+            
+            
+            
+            
+            
+
+
         }
+
         if ((Input.GetAxis("Horizontal") == 1f) || (Input.GetAxis("Horizontal") == -1f))
         {
             rotate = true;
@@ -77,24 +91,54 @@ public class SpaceShip : MonoBehaviour
 
         transform.rotation = rotation;
 
-        if (Input.GetKey(KeyCode.Space))
+
+        if (lastShoot >= timerShoot)
         {
-            if (lastShoot >= timerShoot)
+            
+            incLaser = ((incLaser + 1) % laser.TailleList);
+
+            if (Input.GetKey(KeyCode.Space))
             {
-                tirBruit.Play();
-                incLaser = ((incLaser + 1) % laser.TailleList);
-                
+                tirBruit.mute = false;
 
                 GameObject g = Instantiate(Tir, laserPointeur.position, Quaternion.identity);
-                
+
                 g.GetComponent<TirVaisseau>().ChangeMaterial(laser.couleurs[incLaser]);
-                lastShoot = 0f;
+                
             }
+            else
+            {
+                tirBruit.mute = true;
+                
+            }
+            lastShoot = 0f;
         }
+        
 
     }
 
 
+    public void brutToDiament()
+    {
+        float f = tirBruit.time;
+        if (tirBruit.clip == diament)
+        {
+            tirBruit.clip = brut;
+        }
+        else
+        {
+            Debug.Log("je passe par ici");
+            tirBruit.clip = diament;
+        }
+        tirBruit.time = f;
+        tirBruit.Play();
+    }
+
+    void SOUND()
+    {
+        tirBruit.time = f;
+        tirBruit.Play();
+    }
     void OnCollisionEnter(Collision c)
     {
         if (c.gameObject.tag == "TirAlien")
