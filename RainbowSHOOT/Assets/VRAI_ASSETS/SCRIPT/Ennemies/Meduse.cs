@@ -6,10 +6,14 @@ using PathCreation;
 
 public class Meduse : Alien
 {
+    public Quaternion rotation;
+    private Vector3 from;
+    private Vector3 to;
+    private float timeCount;
 
-
-
-
+    public float dureeRotate;
+    public float currentRotate;
+    public bool rotate;
 
     public Animator anim;
 
@@ -22,6 +26,10 @@ public class Meduse : Alien
     // Start is called before the first frame update
     void Start()
     {
+        from = new Vector3(90f, 0, 0);
+        from = new Vector3(180f, 0, 0);
+        timeCount = 0f;
+        rotate = false;
         life = 12;
         vitesse = 1f;
         tempsperso = Random.Range(4, 6f);
@@ -53,6 +61,7 @@ public class Meduse : Alien
         {
             anim.SetTrigger("shoot");
             tempspersoUp = 0f;
+            rotate = true;
         }
         
 
@@ -60,6 +69,30 @@ public class Meduse : Alien
 
         transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
 
+        if (rotate)
+        {
+            currentRotate += Time.deltaTime;
+            if (currentRotate < dureeRotate / 2)
+            {
+                transform.Rotate(200f* Time.deltaTime, 0f, 0f, Space.Self);
+  
+                
+
+            }
+            else
+            {
+                transform.Rotate(-200f * Time.deltaTime, 0f, 0f, Space.Self);
+
+                
+            }
+            
+        }
+        if (currentRotate > dureeRotate)
+        {
+            rotate = false;
+
+            currentRotate = 0f;
+        }
 
         if (life <= 0)
         {

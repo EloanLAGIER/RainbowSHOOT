@@ -407,14 +407,14 @@ MonoBehaviour:
   life: 20
   vitesse: 1
   tir: {fileID: 2859480215460527605, guid: ae808349dc7660a4c8f75dc0192dc046, type: 3}
-  shootSound: {fileID: 4967361045145292430}
-  hitSound: {fileID: 6734852052524291890}
-  deathSound: {fileID: 8296633772217783371}
+  position: {x: 0, y: 0, z: 0}
   pathCreator: {fileID: 0}
   distanceTravelled: 0
   timerShoot: 0
   ecartShoot: 1
-  position: {x: 0, y: 0, z: 0}
+  shootSound: {fileID: 4967361045145292430}
+  hitSound: {fileID: 6734852052524291890}
+  deathSound: {fileID: 8296633772217783371}
   r: 0
   materials:
   - {fileID: 2100000, guid: 6127a4fb660dad447b8306c61a5ba68b, type: 2}
@@ -497,7 +497,7 @@ PrefabInstance:
     - target: {fileID: 2209215271627665369, guid: 8c9f40bc4b17e5b48b4bf89bbc760d30, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6127a4fb660dad447b8306c61a5ba68b, type: 2}
+      objectReference: {fileID: 2100000, guid: d881ddadbd8245c44921c31dbf59ff17, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c9f40bc4b17e5b48b4bf89bbc760d30, type: 3}
 --- !u!1 &5735274014687747910 stripped

@@ -2055,7 +2055,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4879716246346406836}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 16.174746, y: 0.55191505, z: -17.5138}
+  m_LocalPosition: {x: 16.174746, y: 0.8178096, z: -17.372917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5572029831930739057}
@@ -2097,9 +2097,13 @@ MonoBehaviour:
   life: 100
   vitesse: 0
   tir: {fileID: 8006036003999356506, guid: 2e2be82599ca4f64bbc57c465e9b6365, type: 3}
+  position: {x: 0, y: 0, z: 0}
   pathCreator: {fileID: 0}
   distanceTravelled: 0
-  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  dureeRotate: 1.2
+  currentRotate: 0
+  rotate: 0
   anim: {fileID: 0}
   tempsperso: 0
   tempspersoUp: 0

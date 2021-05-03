@@ -50,9 +50,9 @@ public class SpaceShip : MonoBehaviour
 
 
         rotation = transform.rotation;
-        rotation.z += Time.deltaTime * -2f * (Input.GetAxis("Horizontal"));
+        rotation.x += Time.deltaTime * 2f * (Input.GetAxis("Horizontal"));
 
-        rotation.z = Mathf.Clamp(rotation.z, -0.5f, 0.5f);
+        rotation.x = Mathf.Clamp(rotation.x, -0.5f, 0.5f);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -76,19 +76,20 @@ public class SpaceShip : MonoBehaviour
         {
             rotate = false;
         }
-        if ((Input.GetAxis("Horizontal") < 1f) && (rotation.z != 0f) && (Input.GetAxis("Horizontal") > -1f) && (rotate == true))
+        if ((Input.GetAxis("Horizontal") < 1f) && (rotation.x != 0f) && (Input.GetAxis("Horizontal") > -1f) && (rotate == true))
         {
 
-            if (rotation.z < 0.01f)
+            if (rotation.x < 0.01f)
             {
-                rotation.z += Time.deltaTime * 3f;
+                rotation.x += Time.deltaTime * 3f;
             }
-            if (rotation.z > 0.01f)
+            if (rotation.x > 0.01f)
             {
-                rotation.z -= Time.deltaTime * 3f;
+                rotation.x -= Time.deltaTime * 3f;
             }
         }
-
+        Debug.Log(transform.rotation);
+        
         transform.rotation = rotation;
 
 
