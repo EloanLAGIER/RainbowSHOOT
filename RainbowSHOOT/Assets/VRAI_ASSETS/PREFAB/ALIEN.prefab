@@ -47,12 +47,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8187985831510388120}
-  - component: {fileID: 8187985831510388121}
   - component: {fileID: 8187985831510388118}
   - component: {fileID: 8187985831510388119}
   - component: {fileID: 4967361045145292430}
   - component: {fileID: 6734852052524291890}
   - component: {fileID: 8296633772217783371}
+  - component: {fileID: -4521235120792631354}
   m_Layer: 0
   m_Name: ALIEN
   m_TagString: Alien
@@ -75,36 +75,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8187985831510388121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8187985831510388122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4933183e5154084f9d3046ca1c59774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 15
-  vitesse: 5
-  timerShoot: 0
-  ecartShoot: 1
-  tir: {fileID: 2859480215460527605, guid: ae808349dc7660a4c8f75dc0192dc046, type: 3}
-  materials:
-  - {fileID: 2100000, guid: 6127a4fb660dad447b8306c61a5ba68b, type: 2}
-  - {fileID: 2100000, guid: 362bb8361b5590144bbe61a83b6188df, type: 2}
-  - {fileID: 2100000, guid: 7649bfb4b9d8db04aba7d2d0b3b2d312, type: 2}
-  - {fileID: 2100000, guid: 55ac0d4ed40c8c74b99b077500ad8915, type: 2}
-  - {fileID: 2100000, guid: d881ddadbd8245c44921c31dbf59ff17, type: 2}
-  - {fileID: 2100000, guid: e187575757e74a449b33178bee2a5ea9, type: 2}
-  shootSound: {fileID: 4967361045145292430}
-  hitSound: {fileID: 6734852052524291890}
-  deathSound: {fileID: 8296633772217783371}
-  pathCreator: {fileID: 0}
-  distanceTravelled: 0
-  r: 0
 --- !u!54 &8187985831510388118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -422,6 +392,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4521235120792631354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8187985831510388122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4db186eec1d36c4dbbb9c8ca0ef8d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 20
+  vitesse: 1
+  tir: {fileID: 2859480215460527605, guid: ae808349dc7660a4c8f75dc0192dc046, type: 3}
+  shootSound: {fileID: 4967361045145292430}
+  hitSound: {fileID: 6734852052524291890}
+  deathSound: {fileID: 8296633772217783371}
+  pathCreator: {fileID: 0}
+  distanceTravelled: 0
+  timerShoot: 0
+  ecartShoot: 1
+  position: {x: 0, y: 0, z: 0}
+  r: 0
+  materials:
+  - {fileID: 2100000, guid: 6127a4fb660dad447b8306c61a5ba68b, type: 2}
+  - {fileID: 2100000, guid: e187575757e74a449b33178bee2a5ea9, type: 2}
+  - {fileID: 2100000, guid: 7649bfb4b9d8db04aba7d2d0b3b2d312, type: 2}
+  - {fileID: 2100000, guid: d881ddadbd8245c44921c31dbf59ff17, type: 2}
+  - {fileID: 2100000, guid: 362bb8361b5590144bbe61a83b6188df, type: 2}
+  - {fileID: 2100000, guid: 55ac0d4ed40c8c74b99b077500ad8915, type: 2}
 --- !u!1001 &4852242144765731351
 PrefabInstance:
   m_ObjectHideFlags: 0

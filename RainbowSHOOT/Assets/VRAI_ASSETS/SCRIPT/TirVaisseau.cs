@@ -18,7 +18,8 @@ public class TirVaisseau : Tir
     {
 
 	    transform.position += transform.forward * vitesse * Time.deltaTime;
-	    if(position.z >=40f){
+	    if(transform.position.z >=80f){
+       
         	Destroy(this.gameObject);	
 	    } 
     }
@@ -27,7 +28,7 @@ public class TirVaisseau : Tir
     if (c.gameObject.tag == "Alien" ){
 
 	    c.gameObject.GetComponent<Alien>().life -=12;
-        c.gameObject.GetComponent<Alien>().hitSound.Play();
+        c.gameObject.GetComponent<Alien>().Scorehit();
         Destroy(this.gameObject);
 	}
 }

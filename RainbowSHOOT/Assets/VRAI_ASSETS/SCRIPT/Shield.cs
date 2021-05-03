@@ -11,7 +11,8 @@ public class Shield : ScriptableObject
     public List<string> nomMat;
     public int tailleList;
 
-
+    
+    
 
 
 }

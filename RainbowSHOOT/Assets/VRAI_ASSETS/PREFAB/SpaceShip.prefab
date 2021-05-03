@@ -563,7 +563,6 @@ MonoBehaviour:
   tirBruit: {fileID: 210202095}
   brut: {fileID: 8300000, guid: a948536d082a339419e506c994c7a568, type: 3}
   diament: {fileID: 8300000, guid: 9ec4a40e50553e3499514a6302c6a9e6, type: 3}
-  s: {fileID: 3444177888340393235}
 --- !u!1 &6827803312970994953
 GameObject:
   m_ObjectHideFlags: 0
