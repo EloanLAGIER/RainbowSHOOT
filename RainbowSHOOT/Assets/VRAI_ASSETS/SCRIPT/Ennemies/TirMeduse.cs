@@ -29,5 +29,10 @@ public class TirMeduse : MonoBehaviour
         }
         pos.z -= Time.deltaTime * vitesse;
         transform.position = pos;
+
+        if (pos.y < -10f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

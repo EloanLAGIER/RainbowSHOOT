@@ -1,0 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TirNymph : MonoBehaviour
+{
+    Vector3 dest;
+    Vector3 pos;
+    float mid;
+    public float vitesse;
+    // Start is called before the first frame update
+    void Start()
+    {
+        dest = GameObject.FindObjectOfType<SpaceShip>().transform.position;
+        dest.z += Random.Range(-5f, 5f);
+        dest.x += Random.Range(-5f, 5f);
+        mid = (transform.position.z + dest.z) / 2f;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        pos = transform.position;
+        if (pos.z > mid)
+        {
+            pos.y += Time.deltaTime * vitesse;
+
+        }
+        else
+        {
+            pos.y -= Time.deltaTime * vitesse;
+        }
+
+        if (dest.x > pos.x)
+        {
+            pos.x += Time.deltaTime * vitesse;
+        }
+
+        if (dest.x < pos.x)
+        {
+            pos.x -= Time.deltaTime * vitesse;
+        }
+        pos.z -= Time.deltaTime * vitesse;
+        transform.position = pos;
+
+        if (pos.y < -10f)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+}

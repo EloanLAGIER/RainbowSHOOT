@@ -25,7 +25,8 @@ public class WaveManager : MonoBehaviour
     public GameObject Mag;
     public List<Flocon> flocons;
     public List<Star> stars;
-
+    public List<Pollen> pollens;
+    public List<Nymph> nymphs;
     public List<Rock> rocks;
     public List<Meduse> meduses;
 
@@ -71,26 +72,28 @@ public class WaveManager : MonoBehaviour
             {
                 for (int i = 0; i < 5; i++)
                 {
+                    ennemies += 1;
                     Vector3 p = pathCreator.path.GetPointAtDistance(pathCreator.path.length / (5 + 1) * (i + 1));
                     p.y += 10;
                    
                     Alien a = Instantiate(flocons[Random.Range(0, flocons.Count)], p, Quaternion.identity);
                     a.GetComponent<Alien>().pathCreator = pathCreator;
                     a.GetComponent<Alien>().distanceTravelled = pathCreator.path.length / (5 + 1) * (i + 1);
-                    ennemies += 1;
+                    
                 }
             }
             else
             {
                 for (int i = 0; i < 5; i++)
                 {
+                    ennemies += 1;
                     Vector3 p = pathCreator.path.GetPointAtDistance(pathCreator.path.length / (5 + 1) * (i + 1));
                     p.y += 10;
                    
                     Star a = Instantiate(stars[Random.Range(0, stars.Count)], p, Quaternion.Euler(0, 180, 0));
                     a.pathCreator = pathCreator;
                     a.distanceTravelled = pathCreator.path.length / (5 + 1) * (i + 1);
-                    ennemies += 1;
+
                 }
             }
         }
@@ -105,7 +108,7 @@ public class WaveManager : MonoBehaviour
                     Vector3 p = pathCreator.path.GetPointAtDistance(pathCreator.path.length / (5 + 1) * (i + 1));
                     p.y += 10;
 
-                    Flocon a = Instantiate(flocons[Random.Range(0, flocons.Count)], p, Quaternion.identity);
+                    Nymph a = Instantiate(nymphs[Random.Range(0, nymphs.Count)], p, Quaternion.Euler(00, 180, 0));
                     a.pathCreator = pathCreator;
                     a.distanceTravelled = pathCreator.path.length / (5 + 1) * (i + 1);
                     ennemies += 1;
@@ -118,7 +121,7 @@ public class WaveManager : MonoBehaviour
                     Vector3 p = pathCreator.path.GetPointAtDistance(pathCreator.path.length / (5 + 1) * (i + 1));
                     p.y += 10;
 
-                    Meduse a = Instantiate(meduses[Random.Range(0, meduses.Count)], p, Quaternion.Euler(90, 0, 0));
+                    Pollen a = Instantiate(pollens[Random.Range(0, pollens.Count)], p, Quaternion.Euler(90, 0, 0));
                     a.pathCreator = pathCreator;
                     a.distanceTravelled = pathCreator.path.length / (5 + 1) * (i + 1);
                     ennemies += 1;
@@ -129,6 +132,7 @@ public class WaveManager : MonoBehaviour
         if (niveauCount == 3)
         {
             int rand = Random.Range(0, 2);
+            rand = 0;
             if (rand == 0)
             {
                 for (int i = 0; i < 5; i++)
@@ -136,7 +140,7 @@ public class WaveManager : MonoBehaviour
                     Vector3 p = pathCreator.path.GetPointAtDistance(pathCreator.path.length / (5 + 1) * (i + 1));
                     p.y += 10;
 
-                    Rock a = Instantiate(rocks[Random.Range(0, rocks.Count)], p, Quaternion.identity);
+                    Rock a = Instantiate(rocks[Random.Range(0, rocks.Count)], p, Quaternion.Euler(0, 180, 0));
                     a.pathCreator = pathCreator;
                     a.distanceTravelled = pathCreator.path.length / (5 + 1) * (i + 1);
                     ennemies += 1;

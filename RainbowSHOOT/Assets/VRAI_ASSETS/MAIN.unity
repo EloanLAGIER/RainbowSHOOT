@@ -983,7 +983,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &643525370
 GameObject:
@@ -1613,7 +1613,7 @@ MonoBehaviour:
       enableBigTilePrepass: 0
       isFptlEnabled: 0
   clearColorMode: 1
-  backgroundColorHDR: {r: 0, g: 0, b: 0, a: 0}
+  backgroundColorHDR: {r: 1, g: 1, b: 1, a: 0}
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2
@@ -2281,7 +2281,7 @@ PrefabInstance:
       objectReference: {fileID: 1282818180}
     - target: {fileID: 9160449683910079435, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9160449683910079435, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2497,21 +2497,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb6a458db12b234f83ef4358c5b2c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  niveauCount: 1
+  niveauCount: 3
   waveCount: 0
   game: 1
   ennemies: 0
   waves: {fileID: 787652241}
   niveau: {fileID: 248015278}
   randomShop: 0
-  pathCreator: {fileID: 0}
+  pathCreator: {fileID: 6473692615981322261, guid: 998381a54f1ed0a4e94b86eeab47ba59, type: 3}
   paths:
-  - {fileID: 0}
+  - {fileID: 6473692615981322261, guid: 998381a54f1ed0a4e94b86eeab47ba59, type: 3}
   Mag: {fileID: 2029814200}
   flocons:
   - {fileID: -4521235120792631354, guid: 9530ed22e07b3ca4488abf3db2026bde, type: 3}
   stars:
   - {fileID: 6382039347087098379, guid: 0a6d17a01f70d8943ac2b87e535fc36e, type: 3}
+  pollens:
+  - {fileID: 7322356320498307256, guid: f6c7eadecd0a1d24a949e2780fe88ba4, type: 3}
+  nymphs:
+  - {fileID: 3038959421476777107, guid: 8bc0529d29337a149860b4e1b880bac9, type: 3}
   rocks:
   - {fileID: 4336095741087918801, guid: 0769e43b39424a4459f41bdeaf73e561, type: 3}
   meduses:

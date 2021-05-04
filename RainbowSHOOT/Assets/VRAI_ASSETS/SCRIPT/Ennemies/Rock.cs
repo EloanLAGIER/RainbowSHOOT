@@ -42,6 +42,10 @@ public class Rock : Alien
     public void ChangeProtect()
     {
         protect = !protect;
+        if (!protect)
+        {
+            Instantiate(tir, transform.position, Quaternion.identity);
+        }
     }
 
 
@@ -55,6 +59,7 @@ public class Rock : Alien
                 Scorehit();
                 Destroy(c.gameObject);
             }
+            
         }
     }
 
