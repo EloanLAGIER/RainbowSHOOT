@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:RainbowSHOOT/Assets/VRAI_ASSETS/Mesh/Pollen_Jaune/Pollen0/Pollen0.controller.meta
 guid: d32996ab561975d42b19105d7faa74bc
+=======
+guid: c7567edc83bf93245bddd6fbc3abee07
+>>>>>>> origin/StefBranch:RainbowSHOOT/Assets/HDRPDefaultResources/DefaultSettingsVolumeProfile.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 9100000

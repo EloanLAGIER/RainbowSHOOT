@@ -14,12 +14,14 @@ public class MagasinManager : MonoBehaviour
     public List<GameObject> objects;
     public List<Sprite> miniatures;
 
+    public SpaceShip spaceship;
 
     int r;
     int r2;
 
     void Start()
     {
+        spaceship = FindObjectOfType<SpaceShip>();
         current = 0;
         r = Random.Range(0, objects.Count);
 
@@ -56,11 +58,28 @@ public class MagasinManager : MonoBehaviour
         {
             if (current == 0) {
                 Instantiate(objects[r], transform.position, Quaternion.identity);
+                if (r == 1)
+                {
+                    spaceship.activateLanceGrenade1();
+                }
+
+                if (r == 2)
+                {
+                    spaceship.activateLanceGrenade2();
+                }
             }
 
             if (current == 1)
             {
                 Instantiate(objects[r2], transform.position, Quaternion.identity);
+                if (r2 == 1)
+                {
+                    spaceship.activateLanceGrenade1();
+                }
+                if (r2 == 2)
+                {
+                    spaceship.activateLanceGrenade2();
+                }
             }
             FindObjectOfType<WaveManager>().game = true;
             this.gameObject.SetActive(false);

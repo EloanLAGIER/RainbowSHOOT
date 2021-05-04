@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:RainbowSHOOT/Assets/VRAI_ASSETS/Mesh/Pollen_Jaune/Pollen0/Pollen0.mat.meta
 guid: 66e3d1538ae29384aa3d9b3654f84b72
+=======
+guid: 569ba95975b793c4a8c33c5040fd24d6
+>>>>>>> origin/StefBranch:RainbowSHOOT/Assets/VRAI_ASSETS/SCRIPT/TerrainGen/testmaterial.mat.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
