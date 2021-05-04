@@ -15,10 +15,15 @@ public class MeshGenHeigth : MonoBehaviour
     int[] triangles;
     Vector2[] uv;
 
+
+
+    [Header("BasicMap Generation")]
     public int xSize = 20;
     public int zSize = 20;
 
     public Texture2D BaseHeigth;  // la doc sur les texture: https://docs.unity3d.com/ScriptReference/Texture.html
+
+    Material m_Material;
 
     //private Vector2 fract(Vector2 x) { return x - Mathf.Floor(x); }
 
@@ -58,7 +63,7 @@ public class MeshGenHeigth : MonoBehaviour
         {
             for (int x= 0; x<= xSize; x++)
             {
-                uv[i] = new Vector2((float)x / xSize, (float)z / zSize);  //la precision du float est utile dans les cas ou deux integer sont divisé car il ne donnerai pas la bonn valeur (sans les .000014 ect...
+                uv[i] = new Vector2((float)x / xSize, (float)z / zSize)*2;  //la precision du float est utile dans les cas ou deux integer sont divisé car il ne donnerai pas la bonn valeur (sans les .000014 ect...
                 vertices[i] = new Vector3(x, 0, z);
                 i++;
             }
@@ -91,6 +96,14 @@ public class MeshGenHeigth : MonoBehaviour
         HeigthDeform();
     }
 
+    Vector2 l;
+    Vector2 st;
+
+    [Header("LargeMap")]
+    public float Ampli = 50f;
+    public float Offset = -50;
+    public float Expo = 1;
+
     void HeigthDeform() 
     {
         for (var i = 0; i < vertices.Length; i++)
@@ -98,12 +111,23 @@ public class MeshGenHeigth : MonoBehaviour
             //uv[i].x = fract(uv[i].x + Time.deltaTime/15.0f);
             
             Vector2 st = uv[i] * new Vector2(BaseHeigth.width, BaseHeigth.height);
-            Vector2 l = st /3.0f;
-            float y = BaseHeigth.GetPixel((int)l.x, (int)l.y).grayscale * 20.0f;
-            y += Mathf.Clamp(BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale,0.7f,1.0f) * 40.0f;
-            st *= 8.0f;
-            y -= BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale * 3f;
-            //y -= 100;
+            Vector2 l = new Vector2(uv[i].x, uv[i].y +1) * (new Vector2(BaseHeigth.width, BaseHeigth.height)/4f) ;
+            //float y = BaseHeigth.GetPixel((int)l.x, (int)l.y).grayscale * 20.0f;
+            //float y = Mathf.Clamp(BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale,0.7f,1.0f) *2.0f;
+            
+            //Vector2 s = st * 8.0f;
+            //y -= BaseHeigth.GetPixel((int)s.x, (int)s.y).grayscale * 3f;
+            //y -= 100;*/
+            float y = BaseHeigth.GetPixel((int)l.x,(int)l.y).grayscale* Ampli;
+
+            //y = BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale * 10.0f;
+
+            y = Mathf.Pow(y, Expo);
+            y -= Offset;
+
+
+
+            //m_Material.SetVector("UvNormal", s);
 
             vertices[i].y = y;
         }
@@ -127,9 +151,13 @@ public class MeshGenHeigth : MonoBehaviour
 
     int Count =0;
     int tris = 0;
+    Vector2 lPass = new Vector2(1f, 1f);
 
     void MoveMesh()
     {
+        
+        //Debug.Log("!!!!!!!!!!!" +lPass);
+
         for (int i = 0; i < vertices.Length; i++) { vertices[i].z -= 1;}  //deplacement de 1 pour tous
 
         int LineMove =( xSize +1) * Count ;
@@ -137,6 +165,16 @@ public class MeshGenHeigth : MonoBehaviour
         for (int x = 0; x < xSize+1; x++) //saut de la ligne en arriere
         {
            vertices[LineMove + x].z += zSize+1;
+
+
+
+            st = uv[LineMove + x] * new Vector2(BaseHeigth.width, BaseHeigth.height);
+            l = (lPass + uv[LineMove + x]) * (new Vector2(BaseHeigth.width, BaseHeigth.height)/4f);
+            float y = BaseHeigth.GetPixel((int)l.x, (int)l.y).grayscale * Ampli;
+            //y = BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale * 10.0f;
+
+            y = Mathf.Pow(y, Expo);
+            vertices[LineMove + x].y = y -Offset;
         }
         
         int vert = 0;
@@ -164,20 +202,23 @@ public class MeshGenHeigth : MonoBehaviour
         if(tris == triangles.Length) { tris = 0; }
         
         Count += 1;
-        if (Count == zSize+1) { Count = 0; }
-
+        if (Count == zSize+1) { Count = 0; lPass += new Vector2(0f, 1f); }
+        if (lPass.x == 4f) { lPass = new Vector2(0f, 0f); }
 
         //mesh.Clear();
-        mesh.vertices = vertices;
+            mesh.vertices = vertices;
         mesh.triangles = trianglesdel;
         mesh.RecalculateNormals();
+        mesh.RecalculateTangents();
+
         
     }
         
 
     public void Start()
     {
-       
+        m_Material = GetComponent<Renderer>().material;
+
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
