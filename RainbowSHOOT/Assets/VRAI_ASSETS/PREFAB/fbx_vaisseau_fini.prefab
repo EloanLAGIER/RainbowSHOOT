@@ -691,6 +691,7 @@ Transform:
   - {fileID: 6370676243231689883}
   - {fileID: 4092204933605332241}
   - {fileID: 499781156211693322}
+  - {fileID: 8020728868312894887}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 179.604, z: 0}
@@ -1122,6 +1123,36 @@ Transform:
   - {fileID: 3125580968515334415}
   m_Father: {fileID: 6670540221317964975}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2906640668251431718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8020728868312894887}
+  m_Layer: 0
+  m_Name: lanceGrenade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8020728868312894887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906640668251431718}
+  m_LocalRotation: {x: -0, y: -0.9999941, z: 0, w: 0.0034582927}
+  m_LocalPosition: {x: -0.919, y: 0.892, z: -2.954}
+  m_LocalScale: {x: 1.1877578, y: 1.1877587, z: 1.1877578}
+  m_Children: []
+  m_Father: {fileID: 9160449683910079435}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3281888113140440494
 GameObject:

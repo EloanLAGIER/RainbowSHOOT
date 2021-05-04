@@ -66,4 +66,15 @@ public class Flocon : Alien
             Destroy(this.gameObject);
         }
     }
+
+    void OnCollisionEnter(Collision c)
+    {
+        if (c.gameObject.tag == "TirVaisseau")
+        {
+
+            life -= 12;
+            Scorehit();
+            Destroy(c.gameObject);
+        }
+    }
 }

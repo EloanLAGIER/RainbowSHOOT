@@ -34,7 +34,7 @@ public class Meduse : Alien
         vitesse = 1f;
         tempsperso = Random.Range(4, 6f);
         tempspersoUp = 0f;
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -63,7 +63,7 @@ public class Meduse : Alien
             tempspersoUp = 0f;
             rotate = true;
         }
-        
+
 
         distanceTravelled += vitesse * Time.deltaTime;
 
@@ -74,18 +74,18 @@ public class Meduse : Alien
             currentRotate += Time.deltaTime;
             if (currentRotate < dureeRotate / 2)
             {
-                transform.Rotate(200f* Time.deltaTime, 0f, 0f, Space.Self);
-  
-                
+                transform.Rotate(200f * Time.deltaTime, 0f, 0f, Space.Self);
+
+
 
             }
             else
             {
                 transform.Rotate(-200f * Time.deltaTime, 0f, 0f, Space.Self);
 
-                
+
             }
-            
+
         }
         if (currentRotate > dureeRotate)
         {
@@ -110,5 +110,15 @@ public class Meduse : Alien
         Instantiate(tir, transform.position, Quaternion.identity);
     }
 
+    void OnCollisionEnter(Collision c)
+    {
+        if (c.gameObject.tag == "TirVaisseau")
+        {
+
+            life -= 12;
+            Scorehit();
+            Destroy(c.gameObject);
+        }
+    }
 
 }

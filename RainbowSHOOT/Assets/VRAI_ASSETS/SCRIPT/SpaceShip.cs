@@ -13,6 +13,9 @@ public class SpaceShip : MonoBehaviour
     public float timerShoot = 1f;
     public float lastShoot = 0f;
     public GameObject Tir;
+    public GameObject grenade;
+    public int nbrGrenade;
+    public int GrenadeMax;
     public Text vie;
 
     public AudioSource tirBruit;
@@ -28,6 +31,7 @@ public class SpaceShip : MonoBehaviour
     public LaserScript laser;
     public int incLaser;
     public Transform laserPointeur;
+    public Transform GrenadePointeur;
     private bool rotate; // pour savoir si il �tait inclin�
     // Start is called before the first frame update
     void Start()
@@ -58,16 +62,14 @@ public class SpaceShip : MonoBehaviour
         {
             
             anim.SetTrigger("armON");
-            
-            
-            
-            
-            
-            
-
 
         }
 
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Instantiate(grenade, GrenadePointeur.position, Quaternion.identity);
+        }
         if ((Input.GetAxis("Horizontal") == 1f) || (Input.GetAxis("Horizontal") == -1f))
         {
             rotate = true;
@@ -88,7 +90,7 @@ public class SpaceShip : MonoBehaviour
                 rotation.x -= Time.deltaTime * 3f;
             }
         }
-        Debug.Log(transform.rotation);
+
         
         transform.rotation = rotation;
 

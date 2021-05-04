@@ -43,6 +43,11 @@ public class Alien : MonoBehaviour
        
 
     }
+
+    public void Explosion()
+    {
+        life -= 50;
+    }
     public void Scorehit()
     {
         GameObject.Find("Score").GetComponent<Text>().text = GameObject.Find("UIManager").GetComponent<UIManager>().score.ToString();
