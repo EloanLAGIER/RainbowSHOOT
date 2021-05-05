@@ -15,7 +15,7 @@ public class SpaceShip : MonoBehaviour
     public GameObject Tir;
     public GameObject grenade;
     public int nbrGrenade;
-    public int GrenadeMax=0;
+    public int GrenadeMax;
     public Text vie;
 
     public AudioSource tirBruit;
@@ -32,22 +32,7 @@ public class SpaceShip : MonoBehaviour
     public int incLaser;
     public Transform laserPointeur;
     public Transform GrenadePointeur;
-
-
     private bool rotate; // pour savoir si il �tait inclin�
-
-
-
-    [Header("module")]
-    public GameObject lanceGrenade1;
-    public GameObject lanceGrenade2;
-    public GameObject laser1;
-    public GameObject laser2;
-    public GameObject bouclier1;
-    public GameObject bouclier2;
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -172,19 +157,5 @@ public class SpaceShip : MonoBehaviour
             }
         }
 
-    }
-
-    public void activateLanceGrenade1()
-    {
-        GrenadeMax = 3;
-        lanceGrenade1.SetActive(true);
-        lanceGrenade2.SetActive(false);
-    }
-
-    public void activateLanceGrenade2()
-    {
-        GrenadeMax = 9;
-        lanceGrenade2.SetActive(true);
-        lanceGrenade1.SetActive(false);
     }
 }

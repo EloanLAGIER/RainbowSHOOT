@@ -17,14 +17,6 @@ public class Nymph : Alien
     // Update is called once per frame
     void Update()
     {
-        if (life <= 0)
-        {
-            //GameObject.Find("UIManager").GetComponent<UIManager>().score += Random.Range(100, 200);
-
-            //GameObject.Find("AUDIOMANAGER").GetComponent<AudioSource>().Play();
-            GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -= 1;
-            Destroy(this.gameObject);
-        }
         position = transform.position;
 
 
