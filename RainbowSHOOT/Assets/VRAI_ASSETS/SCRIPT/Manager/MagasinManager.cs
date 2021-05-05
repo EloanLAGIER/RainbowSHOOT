@@ -14,12 +14,14 @@ public class MagasinManager : MonoBehaviour
     public List<GameObject> objects;
     public List<Sprite> miniatures;
 
+    public SpaceShip spaceship;
 
     int r;
     int r2;
 
     void Start()
     {
+        spaceship = FindObjectOfType<SpaceShip>();
         current = 0;
         r = Random.Range(0, objects.Count);
 
@@ -33,6 +35,7 @@ public class MagasinManager : MonoBehaviour
 
     }
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -54,13 +57,35 @@ public class MagasinManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            int r3 = 0;
+            
             if (current == 0) {
+                r3 = r;
                 Instantiate(objects[r], transform.position, Quaternion.identity);
+                
             }
 
             if (current == 1)
             {
+                r3 = r2;
                 Instantiate(objects[r2], transform.position, Quaternion.identity);
+            }
+
+            if (r3 == 0)
+            {
+                spaceship.Laserrando();
+            }
+            if (r3 == 1)
+            {
+                spaceship.LaserPepouz();
+            }
+            if (r3 == 2)
+            {
+                spaceship.LanceGrenade1();
+            }
+            if (r3 == 3)
+            {
+                spaceship.LanceGrenade2();
             }
             FindObjectOfType<WaveManager>().game = true;
             this.gameObject.SetActive(false);
@@ -68,5 +93,20 @@ public class MagasinManager : MonoBehaviour
         }
 
 
+    }
+
+    public void reroll()
+    {
+        spaceship = FindObjectOfType<SpaceShip>();
+        current = 0;
+        r = Random.Range(0, objects.Count);
+
+        img1.sprite = miniatures[r];
+        r2 = Random.Range(0, objects.Count);
+        while (r2 == r)
+        {
+            r2 = Random.Range(0, objects.Count);
+        }
+        img2.sprite = miniatures[r2];
     }
 }

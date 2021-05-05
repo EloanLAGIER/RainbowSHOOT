@@ -1521,7 +1521,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 10000
-  field of view: 77
+  field of view: 63
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1613,7 +1613,7 @@ MonoBehaviour:
       enableBigTilePrepass: 0
       isFptlEnabled: 0
   clearColorMode: 1
-  backgroundColorHDR: {r: 1, g: 1, b: 1, a: 0}
+  backgroundColorHDR: {r: 0.735849, g: 0.40378195, b: 0.09371662, a: 0}
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2
@@ -1746,6 +1746,9 @@ MonoBehaviour:
   xSize: 280
   zSize: 230
   BaseHeigth: {fileID: 2800000, guid: 9ec83692cae39694896ac3c45f73b5c8, type: 3}
+  Ampli: 50
+  Offset: -50
+  Expo: 1
 --- !u!33 &1630261709
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1762,7 +1765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630261707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2900, y: -1500, z: 0}
+  m_LocalPosition: {x: -2900, y: -2200, z: 0}
   m_LocalScale: {x: 22, y: 20, z: 24}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2272,28 +2275,64 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 185944058}
     - target: {fileID: 4038289519690096303, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 11400000, guid: 9453819150af8e847b6a0722bc271003, type: 2}
+    - target: {fileID: 4038289519690096303, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
       propertyPath: grenade
       value: 
       objectReference: {fileID: 6065817276957422887, guid: 8b8cdb7caacd0ab4593cf63c3c6830df, type: 3}
     - target: {fileID: 4038289519690096303, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
+      propertyPath: LaserRando
+      value: 
+      objectReference: {fileID: 11400000, guid: 9453819150af8e847b6a0722bc271003, type: 2}
+    - target: {fileID: 4038289519690096303, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
+      propertyPath: laserrando
+      value: 
+      objectReference: {fileID: 8300000, guid: 0fe67c930f73f3d4fa77be2797bdae12, type: 3}
+    - target: {fileID: 4038289519690096303, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
+      propertyPath: laserPepouz
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b5bf59402aa8114480809cb4a027f9a, type: 2}
+    - target: {fileID: 4038289519690096303, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
+      propertyPath: laserpepous
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a3b8f3a18e2e06458602dfdb71d576b, type: 3}
+    - target: {fileID: 4038289519690096303, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
       propertyPath: GrenadePointeur
       value: 
       objectReference: {fileID: 1282818180}
+    - target: {fileID: 5180658944510665065, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0fe67c930f73f3d4fa77be2797bdae12, type: 3}
     - target: {fileID: 9160449683910079435, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9160449683910079435, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2996063
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160449683910079435, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2996063
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160449683910079435, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2996063
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160449683910079435, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.32027742
+      value: 0.31793
       objectReference: {fileID: 0}
     - target: {fileID: 9160449683910079435, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.35714403
+      value: 0.47811
       objectReference: {fileID: 0}
     - target: {fileID: 9160449683910079435, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.36866465
+      value: -0.31331
       objectReference: {fileID: 0}
     - target: {fileID: 9160449683910079435, guid: a985bc792a5ee844582bcdea2011b852, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2388,11 +2427,16 @@ MonoBehaviour:
   img1: {fileID: 597540216}
   img2: {fileID: 1110818884}
   objects:
-  - {fileID: 3283420584058246442, guid: 8f181ece23200014f99e0a5518326610, type: 3}
-  - {fileID: 3283420584058246442, guid: 8f181ece23200014f99e0a5518326610, type: 3}
+  - {fileID: 643525370}
+  - {fileID: 643525370}
+  - {fileID: 643525370}
+  - {fileID: 643525370}
   miniatures:
-  - {fileID: 21300000, guid: 438dd7ac7e8a18d49b9b9699fd5f58d4, type: 3}
-  - {fileID: 21300000, guid: 438dd7ac7e8a18d49b9b9699fd5f58d4, type: 3}
+  - {fileID: 21300000, guid: afd22deb81d724049b0049daf535e08e, type: 3}
+  - {fileID: 21300000, guid: 7aa47c80ac3b3194aa77851a3b627493, type: 3}
+  - {fileID: 21300000, guid: 748fdb3dd701cb34782dedffa41aa47b, type: 3}
+  - {fileID: 21300000, guid: a15e0077cbcbf4a40b37aeea8f5886b8, type: 3}
+  spaceship: {fileID: 0}
 --- !u!1 &2118424378
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,7 +2541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb6a458db12b234f83ef4358c5b2c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  niveauCount: 3
+  niveauCount: 1
   waveCount: 0
   game: 1
   ennemies: 0
@@ -2520,6 +2564,10 @@ MonoBehaviour:
   - {fileID: 4336095741087918801, guid: 0769e43b39424a4459f41bdeaf73e561, type: 3}
   meduses:
   - {fileID: 1784267097054706972, guid: 68b431bd309662746b96a24b265ee09a, type: 3}
+  level: {fileID: 2134123820}
+  l1: {fileID: 8300000, guid: 8ee428ce9a803194698b5f5b849c8fd4, type: 3}
+  l2: {fileID: 8300000, guid: bd124bd07eb3a3b4ebd31fa3ee6d3623, type: 3}
+  l3: {fileID: 8300000, guid: c77571c044e55fc45b26389273e129a4, type: 3}
 --- !u!4 &2118971557
 Transform:
   m_ObjectHideFlags: 0
@@ -2672,7 +2720,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3f3c815e137b0e645aef5e96f4a8f8ed, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8ee428ce9a803194698b5f5b849c8fd4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

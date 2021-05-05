@@ -30,6 +30,11 @@ public class WaveManager : MonoBehaviour
     public List<Rock> rocks;
     public List<Meduse> meduses;
 
+
+    public AudioSource level;
+    public AudioClip l1;
+    public AudioClip l2;
+    public AudioClip l3;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +47,7 @@ public class WaveManager : MonoBehaviour
         if (waveCount == randomShop)
         {
             Mag.gameObject.SetActive(true);
+            Mag.GetComponent<MagasinManager>().reroll();
             game = false;
             randomShop = 10 * niveauCount + Random.Range(3, 7);
         }
@@ -54,6 +60,17 @@ public class WaveManager : MonoBehaviour
                 niveauCount += 1;
                 niveau.text = "niveau : " + niveauCount;
                 waveCount = 0;
+                float c = level.time;
+                if (niveauCount == 2)
+                {
+                    level.clip = l2;
+                }
+                if (niveauCount == 3)
+                {
+                    level.clip = l3;
+                }
+                level.time = c;
+                level.Play();
 
             }
             GenerateNewWave();
@@ -132,7 +149,7 @@ public class WaveManager : MonoBehaviour
         if (niveauCount == 3)
         {
             int rand = Random.Range(0, 2);
-            rand = 0;
+            rand = 1;
             if (rand == 0)
             {
                 for (int i = 0; i < 5; i++)

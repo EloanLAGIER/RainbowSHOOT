@@ -712,6 +712,9 @@ MonoBehaviour:
   timerShoot: 0.205
   lastShoot: 0
   Tir: {fileID: 2859480215460527605, guid: a359648a02e841242847b4b539dd04f4, type: 3}
+  grenade: {fileID: 0}
+  nbrGrenade: 0
+  GrenadeMax: 0
   vie: {fileID: 0}
   tirBruit: {fileID: 5180658944510665065}
   hitBruit: {fileID: 4683909582198508445}
@@ -720,9 +723,16 @@ MonoBehaviour:
   brut: {fileID: 8300000, guid: a948536d082a339419e506c994c7a568, type: 3}
   anim: {fileID: 8370537626502026212}
   f: 0
+  laserPepouz: {fileID: 0}
+  LaserRando: {fileID: 0}
   laser: {fileID: 11400000, guid: 1235be8cf982ee64faac59583b624224, type: 2}
   incLaser: 0
   laserPointeur: {fileID: 499781156211693322}
+  GrenadePointeur: {fileID: 0}
+  TirGrenade1: {fileID: 4059344195621916374}
+  TirGrenade2: {fileID: 6019023384452552861}
+  RandoLaser: {fileID: 4145891108825140343}
+  PepouzLaser: {fileID: 4540633430242531301}
 --- !u!54 &6715092610330390432
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1414,7 +1424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6370676243231689883
 Transform:
   m_ObjectHideFlags: 0
@@ -1819,7 +1829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7990785544739928244
 Transform:
   m_ObjectHideFlags: 0
@@ -1979,7 +1989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3383375772835350038
 Transform:
   m_ObjectHideFlags: 0

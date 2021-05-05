@@ -9,7 +9,7 @@ public class Flocon : Alien
     public AudioSource shootSound;
     public AudioSource hitSound;
     public AudioSource deathSound;
-
+    public Animator anim;
 
     public int r;
     public List<Material> materials;
@@ -17,6 +17,7 @@ public class Flocon : Alien
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         timerShoot = Random.Range(0f, 1f);
 
     }
@@ -24,6 +25,14 @@ public class Flocon : Alien
     // Update is called once per frame
     void Update()
     {
+        if (life <= 0)
+        {
+            //GameObject.Find("UIManager").GetComponent<UIManager>().score += Random.Range(100, 200);
+
+            // GameObject.Find("AUDIOMANAGER").GetComponent<AudioSource>().Play();
+            GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -= 1;
+            Destroy(this.gameObject);
+        }
         position = transform.position;
 
 
@@ -49,6 +58,7 @@ public class Flocon : Alien
 
         if (timerShoot >= ecartShoot)
         {
+            anim.SetTrigger("shoot");   
             timerShoot = 0f;
             shootSound.Play();
             Instantiate(tir, transform.position, Quaternion.identity);

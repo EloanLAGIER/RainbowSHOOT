@@ -28,15 +28,30 @@ public class SpaceShip : MonoBehaviour
     public Animator anim;
 
     public float f;
+    public LaserScript laserPepouz;
+    public LaserScript LaserRando;
     public LaserScript laser;
     public int incLaser;
     public Transform laserPointeur;
     public Transform GrenadePointeur;
     private bool rotate; // pour savoir si il �tait inclin�
+
+
+    [Header("Module")]
+    public GameObject TirGrenade1;
+    public GameObject TirGrenade2;
+    public GameObject RandoLaser;
+    public GameObject PepouzLaser;
+
+
+    [Header("audio")]
+    public AudioClip laserrando;
+    public AudioClip laserpepous;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GrenadeMax = 0;
         incLaser = 0;
     }
 
@@ -157,5 +172,47 @@ public class SpaceShip : MonoBehaviour
             }
         }
 
+    }
+
+
+    public void LanceGrenade1()
+    {
+        TirGrenade1.SetActive(true);
+        TirGrenade2.SetActive(false);
+        GrenadeMax = 3;
+    }
+
+    public void LanceGrenade2()
+    {
+        TirGrenade1.SetActive(false);
+        TirGrenade2.SetActive(true);
+        GrenadeMax = 9;
+    }
+
+
+    public void Laserrando()
+    {
+        laser = LaserRando;
+        RandoLaser.SetActive(true);
+        PepouzLaser.SetActive(false);
+        float t = tirBruit.time;
+        tirBruit.clip = laserrando;
+        tirBruit.time = t;
+        tirBruit.Play();
+    }
+
+
+    public void LaserPepouz()
+    {
+
+        laser = laserPepouz;
+        RandoLaser.SetActive(false);
+
+        PepouzLaser.SetActive(true);
+
+        float t = tirBruit.time;
+        tirBruit.clip = laserpepous;
+        tirBruit.time = t;
+        tirBruit.Play();
     }
 }
