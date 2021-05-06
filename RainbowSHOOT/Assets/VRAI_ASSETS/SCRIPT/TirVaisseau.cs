@@ -7,6 +7,7 @@ public class TirVaisseau : Tir
     Vector3 position;
     public float vitesse;
     public bool diamentcreated;
+    public int valeur;
     // Start is called before the first frame update
     void Start()
     {

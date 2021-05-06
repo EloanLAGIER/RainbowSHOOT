@@ -764,7 +764,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7111300608566094055}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.97, y: 0, z: 0}
+  m_LocalPosition: {x: -0.97, y: 0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8291650335258747026}
@@ -939,7 +939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7774054982849542609}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.44000006, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 1649921418202315145}
@@ -1072,7 +1072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8672257914199145000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2004995, y: 0.8828168, z: -2.267666}
+  m_LocalPosition: {x: -3.2004995, y: 0, z: -2.267666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8552866955644279021}
@@ -1110,8 +1110,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.83, y: 6.66, z: 1.69}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.83, y: 3.52, z: 1.69}
+  m_Center: {x: 0, y: 0.41, z: 0}
 --- !u!54 &7316427302280243311
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1146,6 +1146,7 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   pathCreator: {fileID: 0}
   distanceTravelled: 0
+  dropGrenade: {fileID: 5845964865503746068, guid: c02affbff6a3e4346924e1719d5de435, type: 3}
 --- !u!1 &8816172263229780889
 GameObject:
   m_ObjectHideFlags: 0

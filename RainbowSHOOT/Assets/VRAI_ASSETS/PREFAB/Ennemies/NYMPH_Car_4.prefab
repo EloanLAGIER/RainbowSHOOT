@@ -643,6 +643,7 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   pathCreator: {fileID: 0}
   distanceTravelled: 0
+  dropGrenade: {fileID: 5845964865503746068, guid: c02affbff6a3e4346924e1719d5de435, type: 3}
   anim: {fileID: 0}
   lasthit: 0
 --- !u!1 &1810854527969012937

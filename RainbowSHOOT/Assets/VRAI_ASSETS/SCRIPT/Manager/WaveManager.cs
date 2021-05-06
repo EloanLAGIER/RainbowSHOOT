@@ -16,6 +16,8 @@ public class WaveManager : MonoBehaviour
     
     public Text waves;
     public Text niveau;
+    public Text go;
+    public Text vie;
     public int randomShop;
     public PathCreator pathCreator;
 
@@ -38,18 +40,31 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randomShop = Random.Range(3, 7);
+        randomShop = 2;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ennemies = 0;
+            FindObjectOfType<SpaceShip>().life = 100;
+            vie.text = "life : 100";
+            niveauCount = 1;
+            niveau.text = "niveau : 1";
+            waveCount = 0;
+            waves.text = "vagues : 0";
+            go.text = "";
+            game = true;
+        }
         if (waveCount == randomShop)
         {
             Mag.gameObject.SetActive(true);
             Mag.GetComponent<MagasinManager>().reroll();
             game = false;
-            randomShop = 10 * niveauCount + Random.Range(3, 7);
+            randomShop = waveCount+1;
+            //randomShop = 10 * niveauCount + Random.Range(3, 7);
         }
 
         if (game && (ennemies == 0) )
@@ -93,9 +108,9 @@ public class WaveManager : MonoBehaviour
                     Vector3 p = pathCreator.path.GetPointAtDistance(pathCreator.path.length / (5 + 1) * (i + 1));
                     p.y += 10;
                    
-                    Alien a = Instantiate(flocons[Random.Range(0, flocons.Count)], p, Quaternion.identity);
-                    a.GetComponent<Alien>().pathCreator = pathCreator;
-                    a.GetComponent<Alien>().distanceTravelled = pathCreator.path.length / (5 + 1) * (i + 1);
+                    Flocon a = Instantiate(flocons[Random.Range(0, flocons.Count)], p, Quaternion.identity);
+                    a.pathCreator = pathCreator;
+                    a.distanceTravelled = pathCreator.path.length / (5 + 1) * (i + 1);
                     
                 }
             }
@@ -149,7 +164,7 @@ public class WaveManager : MonoBehaviour
         if (niveauCount == 3)
         {
             int rand = Random.Range(0, 2);
-            rand = 1;
+
             if (rand == 0)
             {
                 for (int i = 0; i < 5; i++)

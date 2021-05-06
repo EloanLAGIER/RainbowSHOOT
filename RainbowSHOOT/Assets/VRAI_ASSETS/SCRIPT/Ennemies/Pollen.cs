@@ -23,43 +23,46 @@ public class Pollen : Alien
     // Update is called once per frame
     void Update()
     {
-        if (life <= 0)
+        if (life > 0)
         {
-            //GameObject.Find("UIManager").GetComponent<UIManager>().score += Random.Range(100, 200);
-
-            // GameObject.Find("AUDIOMANAGER").GetComponent<AudioSource>().Play();
-            GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -= 1;
-            Destroy(this.gameObject);
-        }
-        position = transform.position;
+            position = transform.position;
 
 
-        if (transform.position.y != 0f)
-        {
-            position.y -= Time.deltaTime;
-
-            if (transform.position.y < 0f)
+            if (transform.position.y != 0f)
             {
-                position.y = 0f;
+                position.y -= Time.deltaTime;
+
+                if (transform.position.y < 0f)
+                {
+                    position.y = 0f;
+                }
+                transform.position = position;
+                return;
             }
-            transform.position = position;
-            return;
+
+
+
+            distanceTravelled += vitesse * Time.deltaTime;
+
+            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+
+            tempspersoUp += Time.deltaTime;
+            if (tempspersoUp >= tempsperso)
+            {
+
+                tempspersoUp = 0f;
+
+                Instantiate(tir, transform.position, Quaternion.identity);
+
+            }
+
         }
-
-
-
-        distanceTravelled += vitesse * Time.deltaTime;
-
-        transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
-
-        tempspersoUp += Time.deltaTime;
-        if (tempspersoUp >= tempsperso)
+        else
         {
-
-            tempspersoUp = 0f;
-
-            Instantiate(tir, transform.position, Quaternion.identity);
-
+            if (transform.position.y <= -50)
+            {
+                Destroy(this.gameObject);
+            }
         }
 
 
@@ -69,12 +72,26 @@ public class Pollen : Alien
 
     void OnCollisionEnter(Collision c)
     {
-        if (c.gameObject.tag == "TirVaisseau")
+        if (life > 0)
         {
+            if (c.gameObject.tag == "TirVaisseau")
+            {
 
-            life -= 12;
-            Scorehit();
-            Destroy(c.gameObject);
+                life -= c.gameObject.GetComponent<TirVaisseau>().valeur;
+                Scorehit();
+                Destroy(c.gameObject);
+                if (life <= 0)
+                {
+                    int rando = Random.Range(0, 10);
+                    if (rando == 5)
+                    {
+                        Instantiate(dropGrenade, transform.position, Quaternion.identity);
+                    }
+
+                    GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -= 1;
+                    GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                }
+            }
         }
     }
 

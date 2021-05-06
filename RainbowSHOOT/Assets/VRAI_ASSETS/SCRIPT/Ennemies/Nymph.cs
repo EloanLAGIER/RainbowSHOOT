@@ -17,52 +17,67 @@ public class Nymph : Alien
     // Update is called once per frame
     void Update()
     {
-        if (life <= 0)
+        if (life > 0)
         {
-            //GameObject.Find("UIManager").GetComponent<UIManager>().score += Random.Range(100, 200);
-
-            // GameObject.Find("AUDIOMANAGER").GetComponent<AudioSource>().Play();
-            GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -= 1;
-            Destroy(this.gameObject);
-        }
-        position = transform.position;
+            position = transform.position;
 
 
-        if (transform.position.y != 0f)
-        {
-            position.y -= Time.deltaTime;
-
-            if (transform.position.y < 0f)
+            if (transform.position.y != 0f)
             {
-                position.y = 0f;
+                position.y -= Time.deltaTime;
+
+                if (transform.position.y < 0f)
+                {
+                    position.y = 0f;
+                }
+                transform.position = position;
+                return;
             }
-            transform.position = position;
-            return;
+
+
+
+            distanceTravelled += vitesse * Time.deltaTime;
+
+            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
         }
-
-
-
-        distanceTravelled += vitesse * Time.deltaTime;
-
-        transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+        else {
+            if (transform.position.y <= -50)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     void OnCollisionEnter(Collision c)
     {
-        if (c.gameObject.tag == "TirVaisseau")
+        if (life > 0)
         {
-            if (Time.time > lasthit + 2)
+            if (c.gameObject.tag == "TirVaisseau")
             {
-                lasthit = Time.time;
-                life -= 12;
-                Scorehit();
-                Destroy(c.gameObject);
-
-                anim.SetTrigger("hit");
-                int rand = Random.Range(5, 15);
-                for (int i = 0; i <= rand; i++)
+                if (Time.time > lasthit + 2)
                 {
-                    Instantiate(tir, transform.position, Quaternion.identity);
+                    lasthit = Time.time;
+                    life -= c.gameObject.GetComponent<TirVaisseau>().valeur;
+                    Scorehit();
+                    Destroy(c.gameObject);
+
+                    anim.SetTrigger("hit");
+                    int rand = Random.Range(5, 15);
+                    for (int i = 0; i <= rand; i++)
+                    {
+                        Instantiate(tir, transform.position, Quaternion.identity);
+                    }
+                }
+                if (life <= 0)
+                {
+                    int rando = Random.Range(0, 10);
+                    if (rando == 5)
+                    {
+                        Instantiate(dropGrenade, transform.position, Quaternion.identity);
+                    }
+
+                    GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -= 1;
+                    GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 }
             }
         }

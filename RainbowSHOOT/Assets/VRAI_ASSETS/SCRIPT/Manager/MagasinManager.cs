@@ -11,7 +11,6 @@ public class MagasinManager : MonoBehaviour
     public Image img1;
     public Image img2;
 
-    public List<GameObject> objects;
     public List<Sprite> miniatures;
 
     public SpaceShip spaceship;
@@ -23,13 +22,12 @@ public class MagasinManager : MonoBehaviour
     {
         spaceship = FindObjectOfType<SpaceShip>();
         current = 0;
-        r = Random.Range(0, objects.Count);
-
+        r = Random.Range(0, miniatures.Count);
         img1.sprite = miniatures[r];
-        r2 = Random.Range(0, objects.Count);
+        r2 = Random.Range(0, miniatures.Count);
         while (r2 == r)
         {
-            r2 = Random.Range(0, objects.Count);
+            r2 = Random.Range(0, miniatures.Count);
         }
         img2.sprite = miniatures[r2];
 
@@ -61,14 +59,13 @@ public class MagasinManager : MonoBehaviour
             
             if (current == 0) {
                 r3 = r;
-                Instantiate(objects[r], transform.position, Quaternion.identity);
-                
+               
             }
 
             if (current == 1)
             {
                 r3 = r2;
-                Instantiate(objects[r2], transform.position, Quaternion.identity);
+
             }
 
             if (r3 == 0)
@@ -87,6 +84,42 @@ public class MagasinManager : MonoBehaviour
             {
                 spaceship.LanceGrenade2();
             }
+
+            if (r3== 4)
+            {
+                spaceship.DiamenDivise();
+            }
+
+            if (r3 == 5)
+            {
+                spaceship.DiamentRainbow();
+            }
+
+            if (r3 == 6)
+            {
+                spaceship.DiamMega();
+            }
+
+            if (r3 == 7)
+            {
+                spaceship.Healo();
+            }
+            if (r3 == 8)
+            {
+                spaceship.Resisto();
+            }
+            if (r3 == 9)
+            {
+                spaceship.Speedo();
+            }
+            if (r3 == 10)
+            {
+                spaceship.Bouc1();
+            }
+            if (r3 == 11)
+            {
+                spaceship.Bouc2();
+            }
             FindObjectOfType<WaveManager>().game = true;
             this.gameObject.SetActive(false);
 
@@ -99,13 +132,14 @@ public class MagasinManager : MonoBehaviour
     {
         spaceship = FindObjectOfType<SpaceShip>();
         current = 0;
-        r = Random.Range(0, objects.Count);
-
+        r = Random.Range(0, miniatures.Count);
         img1.sprite = miniatures[r];
-        r2 = Random.Range(0, objects.Count);
+        r2 = Random.Range(0, miniatures.Count);
+
+        
         while (r2 == r)
         {
-            r2 = Random.Range(0, objects.Count);
+            r2 = Random.Range(0, miniatures.Count);
         }
         img2.sprite = miniatures[r2];
     }

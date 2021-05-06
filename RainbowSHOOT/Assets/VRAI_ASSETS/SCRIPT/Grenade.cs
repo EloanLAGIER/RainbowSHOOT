@@ -26,7 +26,7 @@ public class Grenade : MonoBehaviour
         if (transform.position.z< aterissage.z)
         {
             transform.position += Vector3.forward * Time.deltaTime * vitesse;
-            Debug.Log(Vector3.forward * Time.deltaTime * vitesse);
+
         }
         else
         {
@@ -44,6 +44,11 @@ public class Grenade : MonoBehaviour
             }
             
 
+        }
+
+        if (timeurExplose > 4f)
+        {
+            Destroy(this.gameObject);
         }
     }
 }

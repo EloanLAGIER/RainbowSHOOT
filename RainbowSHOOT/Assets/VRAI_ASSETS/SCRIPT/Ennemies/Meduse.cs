@@ -40,68 +40,69 @@ public class Meduse : Alien
     // Update is called once per frame
     void Update()
     {
-        if (life <= 0)
+        if (life > 0)
         {
-            //GameObject.Find("UIManager").GetComponent<UIManager>().score += Random.Range(100, 200);
-
-            // GameObject.Find("AUDIOMANAGER").GetComponent<AudioSource>().Play();
-            GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -= 1;
-            Destroy(this.gameObject);
-        }
-        position = transform.position;
+            position = transform.position;
 
 
-        if (transform.position.y != 0f)
-        {
-            position.y -= Time.deltaTime;
-
-            if (transform.position.y < 0f)
+            if (transform.position.y != 0f)
             {
-                position.y = 0f;
-            }
-            transform.position = position;
-            return;
-        }
+                position.y -= Time.deltaTime;
 
-
-        tempspersoUp += Time.deltaTime;
-        if (tempspersoUp >= tempsperso)
-        {
-            anim.SetTrigger("shoot");
-            tempspersoUp = 0f;
-            rotate = true;
-        }
-
-
-        distanceTravelled += vitesse * Time.deltaTime;
-
-        transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
-
-        if (rotate)
-        {
-            currentRotate += Time.deltaTime;
-            if (currentRotate < dureeRotate / 2)
-            {
-                transform.Rotate(200f * Time.deltaTime, 0f, 0f, Space.Self);
-
-
-
-            }
-            else
-            {
-                transform.Rotate(-200f * Time.deltaTime, 0f, 0f, Space.Self);
-
-
+                if (transform.position.y < 0f)
+                {
+                    position.y = 0f;
+                }
+                transform.position = position;
+                return;
             }
 
-        }
-        if (currentRotate > dureeRotate)
-        {
-            rotate = false;
 
-            currentRotate = 0f;
-        }
+            tempspersoUp += Time.deltaTime;
+            if (tempspersoUp >= tempsperso)
+            {
+                anim.SetTrigger("shoot");
+                tempspersoUp = 0f;
+                rotate = true;
+            }
 
+
+            distanceTravelled += vitesse * Time.deltaTime;
+
+            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+
+            if (rotate)
+            {
+                currentRotate += Time.deltaTime;
+                if (currentRotate < dureeRotate / 2)
+                {
+                    transform.Rotate(200f * Time.deltaTime, 0f, 0f, Space.Self);
+
+
+
+                }
+                else
+                {
+                    transform.Rotate(-200f * Time.deltaTime, 0f, 0f, Space.Self);
+
+
+                }
+
+            }
+            if (currentRotate > dureeRotate)
+            {
+                rotate = false;
+
+                currentRotate = 0f;
+            }
+        }
+        else {
+            if (transform.position.y <= -50)
+            {
+                Destroy(this.gameObject);
+            }
+            position = transform.position;
+        }
        
 
     }
@@ -113,12 +114,26 @@ public class Meduse : Alien
 
     void OnCollisionEnter(Collision c)
     {
-        if (c.gameObject.tag == "TirVaisseau")
+        if (life > 0)
         {
+            if (c.gameObject.tag == "TirVaisseau")
+            {
 
-            life -= 12;
-            Scorehit();
-            Destroy(c.gameObject);
+                life -= c.gameObject.GetComponent<TirVaisseau>().valeur;
+                Scorehit();
+                Destroy(c.gameObject);
+                if (life <= 0)
+                {
+                    int rando = Random.Range(0, 10);
+                    if (rando == 5)
+                    {
+                        Instantiate(dropGrenade, transform.position, Quaternion.identity);
+                    }
+
+                    GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -= 1;
+                    GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                }
+            }
         }
     }
 
