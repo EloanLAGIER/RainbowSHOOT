@@ -77,6 +77,7 @@ public class Star : Alien
 
                     GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -= 1;
                     GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    GetComponent<Animator>().enabled = false;
                 }
             }
         }
