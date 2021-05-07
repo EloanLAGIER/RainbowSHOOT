@@ -346,7 +346,7 @@ public class SpaceShip : MonoBehaviour
         bouc1.SetActive(false);
         if (FindObjectOfType<Bouclier>())
         {
-            Destroy(FindObjectOfType<Bouclier>());
+            Destroy(FindObjectOfType<Bouclier>().gameObject);
         }
         Instantiate(bouc2Shad, transform.position, Quaternion.identity);
     }

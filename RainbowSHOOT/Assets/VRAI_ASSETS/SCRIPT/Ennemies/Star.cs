@@ -42,7 +42,7 @@ public class Star : Alien
             {
                 Destroy(this.gameObject);
             }
-            position = transform.position;
+
         }
 
 

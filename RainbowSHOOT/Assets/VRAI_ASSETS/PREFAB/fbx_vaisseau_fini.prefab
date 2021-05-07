@@ -925,6 +925,7 @@ MonoBehaviour:
   life: 100
   vitesse: 5
   timerShoot: 0.205
+  timeurhealo: 0
   lastShoot: 0
   Tir: {fileID: 2859480215460527605, guid: a359648a02e841242847b4b539dd04f4, type: 3}
   grenade: {fileID: 0}
@@ -947,6 +948,7 @@ MonoBehaviour:
   laserPointeur: {fileID: 499781156211693322}
   GrenadePointeur: {fileID: 0}
   diamentPlace: {fileID: 4542886360141616895}
+  healoBool: 0
   TirGrenade1: {fileID: 4059344195621916374}
   TirGrenade2: {fileID: 6019023384452552861}
   RandoLaser: {fileID: 4145891108825140343}
