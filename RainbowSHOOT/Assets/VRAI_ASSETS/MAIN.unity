@@ -2971,7 +2971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   niveauCount: 1
   waveCount: 0
-  game: 0
+  game: 1
   ennemies: 0
   waves: {fileID: 787652241}
   niveau: {fileID: 248015278}

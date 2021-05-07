@@ -118,7 +118,7 @@ public class Meduse : Alien
         {
             if (c.gameObject.tag == "TirVaisseau")
             {
-
+                Instantiate(hit, transform.position, Quaternion.identity);
                 life -= c.gameObject.GetComponent<TirVaisseau>().valeur;
                 Scorehit();
                 Destroy(c.gameObject);

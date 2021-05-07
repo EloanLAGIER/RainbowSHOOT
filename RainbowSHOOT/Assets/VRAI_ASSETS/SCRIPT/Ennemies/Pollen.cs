@@ -76,7 +76,8 @@ public class Pollen : Alien
         {
             if (c.gameObject.tag == "TirVaisseau")
             {
-
+                GameObject g = Instantiate(hit, transform.position, Quaternion.identity);
+                StartCoroutine(DestroyHit(g));
                 life -= c.gameObject.GetComponent<TirVaisseau>().valeur;
                 Scorehit();
                 Destroy(c.gameObject);

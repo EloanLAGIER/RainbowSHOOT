@@ -98,7 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 20
   vitesse: 1
-  tir: {fileID: 4713481420593077719, guid: 7302aab443421a64a935d1ab94ae8155, type: 3}
+  hit: {fileID: 3153745186878302511, guid: 6c79608e495bba042a81f7fdeff677ff, type: 3}
+  tir: {fileID: 8465898248048776679, guid: 17cdd81224c4a9c44bfa493cc163d0ca, type: 3}
   position: {x: 0, y: 0, z: 0}
   pathCreator: {fileID: 0}
   distanceTravelled: 0

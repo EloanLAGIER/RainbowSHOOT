@@ -54,8 +54,11 @@ public class Nymph : Alien
         {
             if (c.gameObject.tag == "TirVaisseau")
             {
+
                 if (Time.time > lasthit + 2)
                 {
+                    GameObject g = Instantiate(hit, transform.position, Quaternion.identity);
+                    StartCoroutine(DestroyHit(g));
                     lasthit = Time.time;
                     life -= c.gameObject.GetComponent<TirVaisseau>().valeur;
                     Scorehit();

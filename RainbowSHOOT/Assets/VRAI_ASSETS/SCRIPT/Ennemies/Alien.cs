@@ -9,7 +9,7 @@ public class Alien : MonoBehaviour
     public int life = 100;
     public float vitesse = 1f;
 
-
+    public GameObject hit;
 
     public GameObject tir;
     public Vector3 position;
@@ -45,5 +45,13 @@ public class Alien : MonoBehaviour
     public void Scorehit()
     {
         GameObject.Find("Score").GetComponent<Text>().text = GameObject.Find("UIManager").GetComponent<UIManager>().score.ToString();
+    }
+
+
+    public IEnumerator DestroyHit(GameObject g)
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(g);
+        Debug.Log("destroyed");
     }
 }
