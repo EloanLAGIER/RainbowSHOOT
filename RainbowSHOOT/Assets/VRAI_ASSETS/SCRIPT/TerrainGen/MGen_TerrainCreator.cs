@@ -11,7 +11,7 @@ public class MGen_TerrainCreator : MonoBehaviour
 {
     Mesh mesh;
 
-    Vector3[] vertices;
+    public Vector3[] vertices;
     int[] triangles;
     Vector2[] uv;
 
@@ -22,8 +22,10 @@ public class MGen_TerrainCreator : MonoBehaviour
     public float zSize;
 
     public Texture2D BaseHeigth;  // la doc sur les texture: https://docs.unity3d.com/ScriptReference/Texture.html
+    GameObject AfterMesh;
+    Mesh AfterTilt;
 
-
+    private MGen_TerrainCreator AftTilt;
 
     /*private Vector2 fract(Vector2 x) { return x - Mathf.Floor(x); }
     private float fract(float x) { return x - Mathf.Floor(x); }
@@ -137,16 +139,23 @@ public class MGen_TerrainCreator : MonoBehaviour
     float Ampli;
     float Offset;
     float Expo;
-    
+    public Vector2 TilteNum;
+    Vector2 lPass;
+
 
     public void HeigthDeform(float ampliMed, //medium
         float ampli, //large
-        float offset, float expo) //general
+        float offset, float expo, Vector2 tilteNum) //general
     {
         Ampli = ampli;
         AmpliMed = ampliMed;
         Offset = offset;
         Expo = expo;
+        TilteNum = tilteNum;
+       // AftTilt = afterTilt;//.GetComponent<MGen_TerrainCreator>() ;  //assignation du script/componement du tilte suivant.
+
+        //Debug.Log(AftTilt.vertices[54]);
+
 
 
         for (var i = 0; i < vertices.Length; i++)
@@ -156,16 +165,17 @@ public class MGen_TerrainCreator : MonoBehaviour
             //Debug.Log((float)uv[i].x);
 
             Vector2 st = uv[i] * new Vector2(BaseHeigth.width, BaseHeigth.height);
-            Vector2 l = new Vector2(uv[i].x+1, uv[i].y ) * (new Vector2(BaseHeigth.width, BaseHeigth.height)/4f) ;
+            Vector2 l = (uv[i]+TilteNum)  * (new Vector2(BaseHeigth.width, BaseHeigth.height)) ;
+            l /= 3f;
             //float y = BaseHeigth.GetPixel((int)l.x, (int)l.y).grayscale * 20.0f;
             //float y = Mathf.Clamp(BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale,0.7f,1.0f) *2.0f;
-            
+
             //Vector2 s = st * 8.0f;
             //y -= BaseHeigth.GetPixel((int)s.x, (int)s.y).grayscale * 3f;
             //y -= 100;*/
             float y = BaseHeigth.GetPixel((int)l.x,(int)l.y).grayscale* Ampli;
 
-            y = BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale * AmpliMed;  //version repeatable medium
+            y += BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale * AmpliMed;  //version repeatable medium
 
             y = Mathf.Pow(y, Expo);
             y -= Offset;
@@ -176,6 +186,22 @@ public class MGen_TerrainCreator : MonoBehaviour
 
             vertices[i].y = y;
         }
+
+
+        //Some info pour la preparation du movemesh (en deformation y)
+       /* int n = (int)(TilteNum.x + TilteNum.y + 3);
+        if (n <= 9) { AfterTilt = GameObject.Find("terrain_" + n); }
+            else { AfterTilt = null; }
+       */
+        lPass = TilteNum + new Vector2(0,1);
+        if (lPass.y == 3) { lPass = new Vector2(TilteNum.x, 0); }
+
+        
+        //AfterTilt = GameObject.Find("terrain_" + 1);
+        //Vector3 baba = AfterTilt.GetComponent<MeshFilter>().mesh.vertices[50];
+        //AfterMesh = GameObject.Find("terrain_" + 8);
+        //AfterTilt = AfterMesh.GetComponent<MeshFilter>().mesh;
+        
         UpdateMesh();
     }
 
@@ -184,10 +210,14 @@ public class MGen_TerrainCreator : MonoBehaviour
 
     int Count =0;
     int tris = 0;
-    Vector2 lPass = new Vector2(1f, 1f);
+
+    decimal lx;
+    decimal ly;
+
 
     void MoveMesh()
     {
+        
         
         //Debug.Log("!!!!!!!!!!!" +lPass);
 
@@ -195,25 +225,53 @@ public class MGen_TerrainCreator : MonoBehaviour
 
         int LineMove =( resolution +1) * Count ;
 
-        
+        float y;
+        int n;
         //Debug.Log(xSize);
         //Debug.Log(Count);
-        
-        for (int x = 0; x < resolution+1; x++) //saut de la ligne en arriere
+        /*
+        if (TilteNum.y < 2)
         {
-           vertices[LineMove + x].z += zSize +zEcart;
-            
+            for (int x = 0; x < resolution + 1; x++) //saut de la ligne en arriere
+            {
+                vertices[LineMove + x].z += zSize + zEcart;
 
+                n = (resolution + 1) + LineMove + x;
+                if (n > AfterTilt.vertices.Length) { n = 0+x; }
+         
+                
+                y = AfterTilt.vertices[n].y;
 
-            
+                //float y = baba.y;// AftTilt.vertices[n].y;
+                //Debug.Log(y);
+
+                //vertices[LineMove + x].y = y;
+            }
+        }
+        */
+
+        //   if (TilteNum.y == 2)
+
+        for (int x = 0; x < resolution + 1; x++) //saut de la ligne en arriere
+        {
+            vertices[LineMove + x].z += zSize + zEcart;
+
+            //lPass.y = 0;
+            /*n = (resolution + 1) + LineMove + x;
+            if (n >= uv.Length) { n = 0 + x; }*/
+
             st = uv[LineMove + x] * new Vector2(BaseHeigth.width, BaseHeigth.height);
-            l = (lPass + uv[LineMove + x]) * (new Vector2(BaseHeigth.width, BaseHeigth.height)/4f);
-            float y = BaseHeigth.GetPixel((int)l.x, (int)l.y).grayscale * Ampli;
-            y = BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale * AmpliMed;
+            l = (lPass + uv[LineMove + x]) * (new Vector2(BaseHeigth.width, BaseHeigth.height))/3;//ici pour la taille d'uv /3);
+            /*l = lPass + uv[LineMove+x];
+            lx = (decimal)(l.x * BaseHeigth.width )/ 3;
+            ly = (decimal)(l.y * BaseHeigth.height )/ 3;*/
+            y = BaseHeigth.GetPixel((int)l.x, (int)l.y).grayscale * Ampli;
+            y += BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale * AmpliMed;
 
             y = Mathf.Pow(y, Expo);
-            vertices[LineMove + x].y = y -Offset;
-            
+            vertices[LineMove + x].y = y - Offset;
+
+
             //Debug.Log(lPass + uv[LineMove + x]);
         }
         
@@ -246,7 +304,9 @@ public class MGen_TerrainCreator : MonoBehaviour
 
         Count += 1;
         if (Count == resolution+1) { Count = 0; lPass += new Vector2(0f, 1f); }
-        if (lPass.y == 4f) { lPass = new Vector2(1f, 0f); }
+        if (lPass.y == 3f) { lPass.y = 0; }
+
+        //Debug.Log(lPass.y);
 
         
         
@@ -284,7 +344,7 @@ public class MGen_TerrainCreator : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         */
-        InvokeRepeating("MoveMesh", 0.0f, 0.02f);// +speed);
+        InvokeRepeating("MoveMesh", 0.0f, 0.06f);// +speed);
     }
 
 
