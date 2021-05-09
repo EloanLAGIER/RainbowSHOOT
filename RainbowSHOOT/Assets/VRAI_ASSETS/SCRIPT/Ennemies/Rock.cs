@@ -68,7 +68,7 @@ public class Rock : Alien
                 if (!protect)
                 {
                     GameObject g = Instantiate(hit, transform.position, Quaternion.identity);
-                    Invoke("DestroyHit(g)", 5f);
+                    StartCoroutine(DestroyHit(g));
                     life -= c.gameObject.GetComponent<TirVaisseau>().valeur;
                     Scorehit();
                     Destroy(c.gameObject);

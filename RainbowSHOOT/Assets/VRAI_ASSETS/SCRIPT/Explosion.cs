@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    Vector3 scale;
-    public Vector3 vitesse;
+
     // Start is called before the first frame update
     void Start()
     {

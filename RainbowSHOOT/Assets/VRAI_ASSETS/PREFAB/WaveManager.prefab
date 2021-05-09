@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5662402781809465531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5662402781809465533}
+  - component: {fileID: 5662402781809465532}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5662402781809465533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5662402781809465531}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.9414806, y: 7.793781, z: 18.886005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5662402781809465532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5662402781809465531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb6a458db12b234f83ef4358c5b2c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  niveauCount: 1
+  waveCount: 0
+  game: 1
+  ennemies: 0
+  waves: {fileID: 0}
+  niveau: {fileID: 0}
+  go: {fileID: 0}
+  vie: {fileID: 0}
+  randomShop: 0
+  pathCreator: {fileID: 6473692615981322261, guid: 998381a54f1ed0a4e94b86eeab47ba59, type: 3}
+  paths:
+  - {fileID: 6473692615981322261, guid: 998381a54f1ed0a4e94b86eeab47ba59, type: 3}
+  Mag: {fileID: 0}
+  flocons:
+  - {fileID: -4521235120792631354, guid: 9530ed22e07b3ca4488abf3db2026bde, type: 3}
+  stars:
+  - {fileID: 6382039347087098379, guid: 0a6d17a01f70d8943ac2b87e535fc36e, type: 3}
+  - {fileID: 8077830248657816503, guid: 38b7532630cac1944a1e0a04e799b6da, type: 3}
+  pollens:
+  - {fileID: 7322356320498307256, guid: f6c7eadecd0a1d24a949e2780fe88ba4, type: 3}
+  nymphs:
+  - {fileID: 3038959421476777107, guid: 8bc0529d29337a149860b4e1b880bac9, type: 3}
+  rocks:
+  - {fileID: 4336095741087918801, guid: 0769e43b39424a4459f41bdeaf73e561, type: 3}
+  meduses:
+  - {fileID: 1784267097054706972, guid: 68b431bd309662746b96a24b265ee09a, type: 3}
+  level: {fileID: 0}
+  l1: {fileID: 8300000, guid: 8ee428ce9a803194698b5f5b849c8fd4, type: 3}
+  l2: {fileID: 8300000, guid: bd124bd07eb3a3b4ebd31fa3ee6d3623, type: 3}
+  l3: {fileID: 8300000, guid: c77571c044e55fc45b26389273e129a4, type: 3}
+  flocon: {fileID: 0}
+  star: {fileID: 0}
+  nymph: {fileID: 0}
+  pollen: {fileID: 0}
+  meduse: {fileID: 0}
+  rock: {fileID: 0}
+  Bosspos: {x: 0, y: 0, z: 0}

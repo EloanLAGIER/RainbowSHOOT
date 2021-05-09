@@ -24,6 +24,7 @@ public class WaveManager : MonoBehaviour
 
     public List<PathCreator> paths;
 
+    [Header("ennemies")]
     public GameObject Mag;
     public List<Flocon> flocons;
     public List<Star> stars;
@@ -32,11 +33,21 @@ public class WaveManager : MonoBehaviour
     public List<Rock> rocks;
     public List<Meduse> meduses;
 
-
+    [Header("audio")]
     public AudioSource level;
     public AudioClip l1;
     public AudioClip l2;
     public AudioClip l3;
+
+    [Header("Boss")]
+    public BOSS flocon;
+    public BOSS star;
+    public BOSS nymph;
+    public BOSS pollen;
+    public BOSS meduse;
+    public BOSS rock;
+
+    public Vector3 Bosspos;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +75,7 @@ public class WaveManager : MonoBehaviour
             Mag.GetComponent<MagasinManager>().reroll();
             game = false;
             randomShop = waveCount+1;
-            //randomShop = 10 * niveauCount + Random.Range(3, 7);
+            randomShop = 10 * niveauCount + Random.Range(3, 7);
         }
 
         if (game && (ennemies == 0) )
@@ -72,9 +83,13 @@ public class WaveManager : MonoBehaviour
             waveCount += 1;
             if (waveCount == 10)
             {
+                Mag.gameObject.SetActive(true);
+                Mag.GetComponent<MagasinManager>().reroll();
+                game = false;
+
                 niveauCount += 1;
                 niveau.text = "niveau : " + niveauCount;
-                waveCount = 0;
+                
                 float c = level.time;
                 if (niveauCount == 2)
                 {
@@ -88,13 +103,52 @@ public class WaveManager : MonoBehaviour
                 level.Play();
 
             }
-            GenerateNewWave();
+            else { GenerateNewWave(); }
            
         }
         
     }
 
-    void GenerateNewWave()
+    void BossWave()
+    {
+        int rand = Random.Range(0, 2);
+        if (niveauCount == 1)
+        {
+            if (rand == 0)
+            {
+                Instantiate(flocon, Bosspos, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(star, Bosspos, Quaternion.identity);
+            }
+        }
+        if (niveauCount == 2)
+        {
+            if (rand == 0)
+            {
+                Instantiate(nymph, Bosspos, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(pollen, Bosspos, Quaternion.identity);
+            }
+        }
+        if (niveauCount == 2)
+        {
+            if (rand == 0)
+            {
+                Instantiate(meduse, Bosspos, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(rock, Bosspos, Quaternion.identity);
+
+            }
+
+        }
+    }
+            void GenerateNewWave()
     {
         waves.text = "vague : " + waveCount;
         if (niveauCount == 1)
