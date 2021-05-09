@@ -78,11 +78,16 @@ public class WaveManager : MonoBehaviour
             randomShop = 10 * niveauCount + Random.Range(3, 7);
         }
 
+        
         if (game && (ennemies == 0) )
         {
             waveCount += 1;
-            if (waveCount == 10)
+            if (waveCount == 9)
             {
+                BossWave();
+            }
+                if (waveCount == 10)
+            {   
                 Mag.gameObject.SetActive(true);
                 Mag.GetComponent<MagasinManager>().reroll();
                 game = false;

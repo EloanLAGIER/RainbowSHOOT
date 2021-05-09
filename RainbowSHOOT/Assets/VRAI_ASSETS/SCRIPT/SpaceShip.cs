@@ -25,10 +25,12 @@ public class SpaceShip : MonoBehaviour
     public AudioSource hitBruit;
     public AudioSource GameOver;
 
-
+    public int lasernum = 0;
 
     public AudioClip diament;
     public AudioClip brut;
+    public AudioClip diament2;
+    public AudioClip brut2;
     public Animator anim;
 
     public float f;
@@ -42,7 +44,7 @@ public class SpaceShip : MonoBehaviour
     public Transform GrenadePointeur;
     public Transform diamentPlace;
     private bool diamRainbo;
-    private bool arm;
+    public bool arm;
     private bool rotate; // pour savoir si il �tait inclin�
     public bool healoBool;
     private bool resistoBool;
@@ -69,6 +71,8 @@ public class SpaceShip : MonoBehaviour
     public AudioClip laserrando;
     public AudioClip laserpepous;
     public AudioSource gronade;
+    public AudioClip diamRando;
+    public AudioClip diamPepous;
 
     // Start is called before the first frame update
     void Start()
@@ -116,13 +120,27 @@ public class SpaceShip : MonoBehaviour
         {
             
             anim.SetTrigger("armON");
+
             arm = !arm;
             if (arm)
             {
+                if (lasernum == 0)
+                {
+                    brutToDiament1();
+                }
+                else { brutToDiament2(); }
                 if (diamRainbo)
                 {
                     diamentRainbow.GetComponent<DiamentRainbow>().changetir();
                 }
+            }
+            else
+            {
+                if (lasernum == 0)
+                {
+                    Invoke("brutToDiament1",3f);
+                }
+                else { Invoke("brutToDiament2", 3f); }
             }
 
         }
@@ -185,22 +203,41 @@ public class SpaceShip : MonoBehaviour
             }
             lastShoot = 0f;
         }
-        
+
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
 
     }
 
 
-    public void brutToDiament()
+    public void brutToDiament1()
     {
         float f = tirBruit.time;
         if (tirBruit.clip == diament)
         {
-            tirBruit.clip = brut;
+            tirBruit.clip = laserrando;
         }
         else
         {
-            Debug.Log("je passe par ici");
+            
             tirBruit.clip = diament;
+        }
+        tirBruit.time = f;
+        tirBruit.Play();
+    }
+    public void brutToDiament2()
+    {
+        float f = tirBruit.time;
+        if (tirBruit.clip == diament2)
+        {
+            tirBruit.clip = laserpepous;
+        }
+        else
+        {
+
+            tirBruit.clip = diament2;
         }
         tirBruit.time = f;
         tirBruit.Play();
@@ -264,6 +301,7 @@ public class SpaceShip : MonoBehaviour
 
     public void Laserrando()
     {
+        lasernum = 0;
         laser = LaserRando;
         RandoLaser.SetActive(true);
         PepouzLaser.SetActive(false);
@@ -276,6 +314,7 @@ public class SpaceShip : MonoBehaviour
 
     public void LaserPepouz()
     {
+        lasernum = 1;
 
         laser = laserPepouz;
         RandoLaser.SetActive(false);
@@ -284,6 +323,8 @@ public class SpaceShip : MonoBehaviour
 
         float t = tirBruit.time;
         tirBruit.clip = laserpepous;
+
+       
         tirBruit.time = t;
         tirBruit.Play();
     }
@@ -350,4 +391,6 @@ public class SpaceShip : MonoBehaviour
         }
         Instantiate(bouc2Shad, transform.position, Quaternion.identity);
     }
+
+
 }

@@ -764,7 +764,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7111300608566094055}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.97, y: 1.23, z: 0}
+  m_LocalPosition: {x: -1.01, y: 7.78, z: 1.3500001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8291650335258747026}
@@ -939,7 +939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7774054982849542609}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.34999943, z: 0}
+  m_LocalPosition: {x: -0.04, y: 17.34, z: 1.35}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 1649921418202315145}
@@ -1072,7 +1072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8672257914199145000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.59, z: 0}
+  m_LocalPosition: {x: -3.2004995, y: 0, z: -2.267666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8552866955644279021}
@@ -1093,7 +1093,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 168a6ffa0199d3046a787d060fe9e2bd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1141,9 +1141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 20
-  vitesse: 20
+  vitesse: 1
   hit: {fileID: 2936045129582972310, guid: d855fdb98d2685541a5d065f8f5f32b3, type: 3}
-  tir: {fileID: 2308967657878775376, guid: 1f1fdb42de7916d40a34c19fb7992f41, type: 3}
+  tir: {fileID: 8006036003999356506, guid: eb332e8fc5d8e8d49b586b2401812661, type: 3}
   position: {x: 0, y: 0, z: 0}
   pathCreator: {fileID: 0}
   distanceTravelled: 0

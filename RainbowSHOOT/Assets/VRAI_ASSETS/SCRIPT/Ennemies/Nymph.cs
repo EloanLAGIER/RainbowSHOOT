@@ -22,13 +22,13 @@ public class Nymph : Alien
             position = transform.position;
 
 
-            if (transform.position.y != 0f)
+            if (transform.position.y != -3f)
             {
                 position.y -= Time.deltaTime;
 
-                if (transform.position.y < 0f)
+                if (transform.position.y < -3f)
                 {
-                    position.y = 0f;
+                    position.y = -3f;
                 }
                 transform.position = position;
                 return;
@@ -37,8 +37,9 @@ public class Nymph : Alien
 
 
             distanceTravelled += vitesse * Time.deltaTime;
-
-            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+            position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+            position.y = -3;
+            transform.position =position;
         }
         else {
             if (transform.position.y <= -50)
