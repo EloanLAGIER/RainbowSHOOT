@@ -43,15 +43,15 @@ public class WaveManager : MonoBehaviour
     public BOSS flocon;
     public BOSS star;
     public BOSS nymph;
-    public BOSS pollen;
+    public GameObject pollen;
     public BOSS meduse;
-    public BOSS rock;
+    public GameObject rock;
 
     public Vector3 Bosspos;
     // Start is called before the first frame update
     void Start()
     {
-        randomShop = 2;
+        randomShop = Random.Range(3, 7);
     }
 
     // Update is called once per frame
@@ -61,11 +61,11 @@ public class WaveManager : MonoBehaviour
         {
             ennemies = 0;
             FindObjectOfType<SpaceShip>().life = 100;
-            vie.text = "life : 100";
+            vie.text = "100";
             niveauCount = 1;
-            niveau.text = "niveau : 1";
+
             waveCount = 0;
-            waves.text = "vagues : 0";
+
             go.text = "";
             game = true;
         }
@@ -88,7 +88,7 @@ public class WaveManager : MonoBehaviour
                 game = false;
 
                 niveauCount += 1;
-                niveau.text = "niveau : " + niveauCount;
+
                 
                 float c = level.time;
                 if (niveauCount == 2)
@@ -150,7 +150,7 @@ public class WaveManager : MonoBehaviour
     }
             void GenerateNewWave()
     {
-        waves.text = "vague : " + waveCount;
+
         if (niveauCount == 1)
         {
             int rand = Random.Range(0, 2);

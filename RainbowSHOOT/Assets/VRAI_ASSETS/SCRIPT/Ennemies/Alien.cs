@@ -44,6 +44,7 @@ public class Alien : MonoBehaviour
     }
     public void Scorehit()
     {
+        GameObject.Find("UIManager").GetComponent<UIManager>().score += Random.Range(5,20);
         GameObject.Find("Score").GetComponent<Text>().text = GameObject.Find("UIManager").GetComponent<UIManager>().score.ToString();
     }
 

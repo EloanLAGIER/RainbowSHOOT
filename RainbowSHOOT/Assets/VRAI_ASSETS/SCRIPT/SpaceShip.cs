@@ -136,7 +136,7 @@ public class SpaceShip : MonoBehaviour
                 Instantiate(grenade, GrenadePointeur.position, Quaternion.Euler(0,180,0));
                 gronade.Play();
                 nbrGrenade -= 1;
-                nbrGrenad.text = "grenade : " + nbrGrenade.ToString();
+                nbrGrenad.text = nbrGrenade.ToString();
             }
         }
         if ((Input.GetAxis("Horizontal") == 1f) || (Input.GetAxis("Horizontal") == -1f))
@@ -222,7 +222,7 @@ public class SpaceShip : MonoBehaviour
             {
                 life -= 12;
             }
-            vie.text = "VIE :" + life.ToString();
+            vie.text = life.ToString();
             Destroy(c.gameObject);
             if (life <= 0)
             {
@@ -237,7 +237,7 @@ public class SpaceShip : MonoBehaviour
             if (nbrGrenade + 1 <= GrenadeMax)
             {
                 nbrGrenade += 1;
-                nbrGrenad.text = "grenade : " + nbrGrenade.ToString();
+                nbrGrenad.text = nbrGrenade.ToString();
                 Destroy(c.gameObject);
             }
         }
