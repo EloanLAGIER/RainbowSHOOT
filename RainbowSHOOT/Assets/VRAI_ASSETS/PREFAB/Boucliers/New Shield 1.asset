@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nom: deuxiemeshield
   couleurs:
-  - {fileID: 2100000, guid: 89f9ac36edf54f24cbf18e92e9312cd6, type: 2}
-  - {fileID: 2100000, guid: b0a059752580d8e4a974027806c655a0, type: 2}
-  - {fileID: 2100000, guid: 0c20447eee639ad4ab55b632f8e512b6, type: 2}
-  - {fileID: 2100000, guid: 2ec30fac4be72614d892be82acf4e65a, type: 2}
+  - {r: 0.05919766, g: 0.7490196, b: 0.0039215763, a: 0.29803923}
+  - {r: 0.9433962, g: 0.07564971, b: 0.07564971, a: 0.39607844}
+  - {r: 0.8113208, g: 0.15690637, b: 0.8113208, a: 0.3764706}
+  - {r: 0.29019606, g: 0.50521153, b: 0.81960785, a: 0.3254902}
   time:
-  - 2
-  - 3
-  - 1
-  - 4
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   nomMat:
-  - rouge
-  - bleue
-  - jaune
   - vert
+  - rouge
+  - violet
+  - bleue
   tailleList: 4

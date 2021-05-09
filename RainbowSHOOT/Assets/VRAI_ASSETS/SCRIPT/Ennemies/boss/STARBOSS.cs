@@ -23,22 +23,25 @@ public class STARBOSS : BOSS
     // Update is called once per frame
     void Update()
     {
-        timeurTir -= Time.deltaTime;
-        position = transform.position;
-        position.x += Time.deltaTime * sens * vitesse;
-        if ((position.x>8f) || (position.x < -8f))
+        if (vie > 0)
         {
-            sens *= -1; 
-        }
-        transform.position = position;
-        if ((timeurTir < 0f)&&(vie>0))
-        {
-            anim.SetTrigger("rotation");
-            StartCoroutine("Tirage");
-            timeurTir = Random.Range(10f, 15f);
+            timeurTir -= Time.deltaTime;
+            position = transform.position;
+            position.x += Time.deltaTime * sens * vitesse;
+            if ((position.x > 8f) || (position.x < -8f))
+            {
+                sens *= -1;
+            }
+            transform.position = position;
+            if ((timeurTir < 0f) && (vie > 0))
+            {
+                anim.SetTrigger("rotation");
+                StartCoroutine("Tirage");
+                timeurTir = Random.Range(10f, 15f);
 
 
 
+            }
         }
 
         if (transform.position.y < -50)
@@ -53,6 +56,7 @@ public class STARBOSS : BOSS
         yield return new WaitForSeconds(1.5f);
         for (int i = 0; i < 30; i++)
         {
+            tirB.Play();
             Instantiate(tir, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
         }

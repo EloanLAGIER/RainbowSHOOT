@@ -31,7 +31,7 @@ public class Flocon : Alien
 
             if (transform.position.y != 0f)
             {
-                position.y -= Time.deltaTime;
+                position.y -= Time.deltaTime * vitesse;
 
                 if (transform.position.y < 0f)
                 {
@@ -75,6 +75,8 @@ public class Flocon : Alien
         {
             if (c.gameObject.tag == "TirVaisseau")
             {
+                hitSound.Play();
+
                 GameObject g = Instantiate(hit, transform.position, Quaternion.identity);
                 StartCoroutine(DestroyHit(g));
 
@@ -91,6 +93,7 @@ public class Flocon : Alien
 
                     GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -= 1;
                     GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    GetComponentInChildren<Animator>().enabled = false;
                 }
             }
         }

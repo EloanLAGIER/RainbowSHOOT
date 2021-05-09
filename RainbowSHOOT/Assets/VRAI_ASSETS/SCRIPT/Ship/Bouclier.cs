@@ -18,7 +18,7 @@ public class Bouclier : MonoBehaviour
         inc = 0;
         timerShield = 0;
         currentMat = info.nomMat[inc];
-        gameObject.GetComponent<Renderer>().material = info.couleurs[inc];
+        gameObject.GetComponent<ParticleSystem>().startColor = info.couleurs[inc];
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class Bouclier : MonoBehaviour
         {
             inc = (inc + 1) % info.tailleList;
             timerShield = 0;
-            gameObject.GetComponent<Renderer>().material = info.couleurs[inc];
+            gameObject.GetComponent<ParticleSystem>().startColor = info.couleurs[inc];
             currentMat = info.nomMat[inc];
 
 

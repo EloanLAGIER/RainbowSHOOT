@@ -39,6 +39,7 @@ public class PollenBoss : MonoBehaviour
         timeur += Time.deltaTime;
         if (timeur > 5f)
         {
+
             Instantiate(tir, transform.position, Quaternion.identity);
             timeur = 0f;
         }

@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class BOSS : MonoBehaviour
 {
+    public GameObject hit;
     public float vie;
-
+    public AudioSource tirB;
+    public AudioSource touche;
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "TirVaisseau")
         {
-            vie -= 12;
-            if (vie < 0)
+            if (vie > 0)
             {
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                FindObjectOfType<WaveManager>().ennemies -= 1;
+                touche.Play();
+                Instantiate(hit, collision.transform.position, Quaternion.identity);
+                vie -= 12;
+                if (vie < 0)
+                {
+                    GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    FindObjectOfType<WaveManager>().ennemies -= 1;
+                }
             }
         }
     }

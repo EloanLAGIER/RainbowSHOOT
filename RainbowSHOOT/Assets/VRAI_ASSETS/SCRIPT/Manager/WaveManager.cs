@@ -69,25 +69,35 @@ public class WaveManager : MonoBehaviour
             go.text = "";
             game = true;
         }
-        if (waveCount == randomShop)
-        {
-            Mag.gameObject.SetActive(true);
-            Mag.GetComponent<MagasinManager>().reroll();
-            game = false;
-            randomShop = waveCount+1;
-            randomShop = 10 * niveauCount + Random.Range(3, 7);
-        }
+        
 
         
         if (game && (ennemies == 0) )
         {
             waveCount += 1;
-            if (waveCount == 9)
+            if (waveCount == randomShop)
+            {
+                foreach (TirAlien g in GameObject.FindObjectsOfType<TirAlien>())
+                {
+                    Destroy(g.gameObject);
+                }
+                Mag.gameObject.SetActive(true);
+                Mag.GetComponent<MagasinManager>().reroll();
+                game = false;
+                randomShop = waveCount + 1;
+                randomShop = 10 * niveauCount + Random.Range(3, 7);
+            }
+            else if (waveCount == 9)
             {
                 BossWave();
             }
-                if (waveCount == 10)
-            {   
+            else if (waveCount == 10)
+             {
+
+                foreach (TirAlien g in GameObject.FindObjectsOfType<TirAlien>())
+                {
+                    Destroy(g.gameObject);
+                }
                 Mag.gameObject.SetActive(true);
                 Mag.GetComponent<MagasinManager>().reroll();
                 game = false;
@@ -108,7 +118,12 @@ public class WaveManager : MonoBehaviour
                 level.Play();
 
             }
-            else { GenerateNewWave(); }
+            else 
+            { 
+                
+                
+                GenerateNewWave(); 
+            }
            
         }
         
@@ -116,7 +131,9 @@ public class WaveManager : MonoBehaviour
 
     void BossWave()
     {
+        ennemies += 1;
         int rand = Random.Range(0, 2);
+        rand = 0;
         if (niveauCount == 1)
         {
             if (rand == 0)

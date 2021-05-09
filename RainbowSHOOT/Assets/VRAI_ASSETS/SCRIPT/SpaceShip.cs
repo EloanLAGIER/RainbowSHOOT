@@ -66,6 +66,7 @@ public class SpaceShip : MonoBehaviour
     public GameObject bouc1Shad;
     public GameObject bouc2Shad;
 
+    public GameObject impact;
 
     [Header("audio")]
     public AudioClip laserrando;
@@ -96,7 +97,7 @@ public class SpaceShip : MonoBehaviour
                 if (life < 100)
                 {
                     life += 1;
-                    vie.text = "VIE : " + life;
+                    vie.text = life.ToString();
                 }
                 timeurhealo = 0f;
             }
@@ -122,7 +123,7 @@ public class SpaceShip : MonoBehaviour
             anim.SetTrigger("armON");
 
             arm = !arm;
-            if (arm)
+            if (!arm)
             {
                 if (lasernum == 0)
                 {
@@ -253,6 +254,8 @@ public class SpaceShip : MonoBehaviour
 
         if (c.gameObject.tag == "TirAlien")
         {
+            GameObject g =Instantiate(impact, c.transform.position, Quaternion.identity);
+            StartCoroutine(DestroyImpact(g));
             hitBruit.Play();
             if (resistoBool) { life -= 6; }
             else
@@ -281,13 +284,18 @@ public class SpaceShip : MonoBehaviour
 
     }
 
+    public IEnumerator DestroyImpact(GameObject g)
+    {
+        yield return new WaitForSeconds(1.5f);
+        Destroy(g.gameObject);
 
-    public void LanceGrenade1()
+    }
+        public void LanceGrenade1()
     {
         TirGrenade1.SetActive(true);
         TirGrenade2.SetActive(false);
         GrenadeMax = 3;
-        grenaMax.text = "/3";
+        grenaMax.text = "3";
     }
 
     public void LanceGrenade2()
@@ -295,7 +303,7 @@ public class SpaceShip : MonoBehaviour
         TirGrenade1.SetActive(false);
         TirGrenade2.SetActive(true);
         GrenadeMax = 9;
-        grenaMax.text = "/9";
+        grenaMax.text = "9";
     }
 
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: ORANGE
-  vitesse: 15
+  vitesse: 6
 --- !u!1001 &876509159527089639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,6 +124,10 @@ PrefabInstance:
     - target: {fileID: 3180356857567372215, guid: 47dc4df028859db47b483c669a549d53, type: 3}
       propertyPath: m_Name
       value: PROJ_STAR_ORANGE Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494898265897331009, guid: 47dc4df028859db47b483c669a549d53, type: 3}
+      propertyPath: m_Radius
+      value: 0.38
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -3559888643265993772, guid: 47dc4df028859db47b483c669a549d53, type: 3}

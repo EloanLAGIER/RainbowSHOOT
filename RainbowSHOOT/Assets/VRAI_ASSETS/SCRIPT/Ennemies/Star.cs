@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class Star : Alien
 {
-
-
+    public AudioSource hits;
+    public AudioSource shoot;
+    public float timeur; 
     // Start is called before the first frame update
     void Start()
     {
-        
+        timeur = -1.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
 
         if (life > 0)
         {
+            
             position = transform.position;
 
             if (transform.position.y != 0f)
             {
-                position.y -= Time.deltaTime;
+                position.y -= Time.deltaTime* vitesse;
 
                 if (transform.position.y < 0f)
                 {
@@ -31,6 +33,12 @@ public class Star : Alien
                 }
                 transform.position = position;
                 return;
+            }
+            timeur += Time.deltaTime;
+            if (timeur > .7f)
+            {
+                TirBoule();
+                timeur = 0f;
             }
             distanceTravelled += vitesse * Time.deltaTime;
 
@@ -51,6 +59,7 @@ public class Star : Alien
 
     public void TirBoule()
     {
+        shoot.Play();
         Instantiate(tir, transform.position, Quaternion.identity);
     }
 
@@ -61,7 +70,7 @@ public class Star : Alien
         {
             if (c.gameObject.tag == "TirVaisseau")
             {
-                
+                hits.Play();
                 GameObject g = Instantiate(hit, transform.position, Quaternion.identity);
                 StartCoroutine(DestroyHit(g));
                 life -= c.gameObject.GetComponent<TirVaisseau>().valeur;
@@ -77,7 +86,7 @@ public class Star : Alien
 
                     GameObject.Find("WaveManager").GetComponent<WaveManager>().ennemies -= 1;
                     GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    GetComponent<Animator>().enabled = false;
+                    GetComponentInChildren<Animator>().enabled = false;
                 }
             }
         }
