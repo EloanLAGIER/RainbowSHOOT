@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< Updated upstream
   m_IndirectSpecularColor: {r: 1481.7754, g: 1835.8867, b: 2430.4492, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 41.099167, g: 28.07467, b: 31.602663, a: 1}
+>>>>>>> Stashed changes
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2140,9 +2144,59 @@ MonoBehaviour:
   waveCount: 0
   game: 1
   ennemies: 0
+<<<<<<< Updated upstream
   alien: {fileID: 8187985831510388122, guid: 9530ed22e07b3ca4488abf3db2026bde, type: 3}
   waves: {fileID: 787652241}
   pathCreator: {fileID: 1577100398}
+=======
+  waves: {fileID: 0}
+  niveau: {fileID: 0}
+  go: {fileID: 1863808916}
+  vie: {fileID: 185944058}
+  randomShop: 0
+  pathCreator: {fileID: 6473692615981322261, guid: 998381a54f1ed0a4e94b86eeab47ba59, type: 3}
+  paths:
+  - {fileID: 6473692615981322261, guid: 998381a54f1ed0a4e94b86eeab47ba59, type: 3}
+  Mag: {fileID: 2029814200}
+  flocons:
+  - {fileID: -4521235120792631354, guid: 9530ed22e07b3ca4488abf3db2026bde, type: 3}
+  stars:
+  - {fileID: 8077830248657816503, guid: f9ea548b8d3580a43aa6716a790d7a47, type: 3}
+  - {fileID: 8874923663042508353, guid: aa4a78e44c987b744afcf5cf40a548c0, type: 3}
+  - {fileID: 8993799383107011045, guid: 53f42bb7f993e3f438c13b5367d69c96, type: 3}
+  - {fileID: 89209647600853257, guid: 7192be8bdb76b4841b71f92de472bb25, type: 3}
+  - {fileID: 5480490514911641374, guid: 97fa3f10e33def64b8d50cfc20428502, type: 3}
+  - {fileID: 4693696713921816907, guid: 874ad30d44eedec4bb89f0f7f92ceb50, type: 3}
+  - {fileID: 8892176497622153322, guid: 05608971f6462974e9fef717b53955a7, type: 3}
+  - {fileID: 7353849656151487314, guid: fcf9d897a03cc3c4e9499d7101c8618a, type: 3}
+  - {fileID: 1691235514760803776, guid: 444e54ab08d1c4b43836c581ff44e1d1, type: 3}
+  - {fileID: 6382039347087098379, guid: 0a6d17a01f70d8943ac2b87e535fc36e, type: 3}
+  pollens:
+  - {fileID: 7322356320498307256, guid: f6c7eadecd0a1d24a949e2780fe88ba4, type: 3}
+  nymphs:
+  - {fileID: 4765342565307302304, guid: b8397596df7dd2e46ba807c09f470d1a, type: 3}
+  - {fileID: 6618276815224063486, guid: 86009b9e6077ec04c8b10d984d47f4ad, type: 3}
+  - {fileID: 3269044000970964162, guid: e6f339e844abbd840a3517a4894b8fbe, type: 3}
+  - {fileID: 7046202898134505372, guid: 98c7f67cfdce1244daedb6497eb3dd72, type: 3}
+  - {fileID: 7001007873170451647, guid: 11dfa3aab49a91f4a85c78fd580c1eb1, type: 3}
+  - {fileID: 4842373359530343353, guid: 98782b4db5ceebf4db2a6e99a00aa3ca, type: 3}
+  - {fileID: 6996002677341786505, guid: 7fa4d8fda87719f41ae6586ecb4b7c5e, type: 3}
+  rocks:
+  - {fileID: 4336095741087918801, guid: 0769e43b39424a4459f41bdeaf73e561, type: 3}
+  meduses:
+  - {fileID: 4665703567466339201, guid: 88c836e28997b7046b2d5e3bf98b4555, type: 3}
+  level: {fileID: 2134123820}
+  l1: {fileID: 8300000, guid: 8ee428ce9a803194698b5f5b849c8fd4, type: 3}
+  l2: {fileID: 8300000, guid: bd124bd07eb3a3b4ebd31fa3ee6d3623, type: 3}
+  l3: {fileID: 8300000, guid: c77571c044e55fc45b26389273e129a4, type: 3}
+  flocon: {fileID: 6708844079949480272, guid: 8100afb0bd5309a4184272723abb8fc9, type: 3}
+  star: {fileID: 3645472761173750725, guid: 70ee33db6ce99f247878e03dbc5de280, type: 3}
+  nymph: {fileID: 581051625860096104, guid: 7293f13e61ad9524d830e0262df29247, type: 3}
+  pollen: {fileID: 3963133247484891456, guid: 14c617fb2f549c547b94ec9697e0c61e, type: 3}
+  meduse: {fileID: 8569297429283667575, guid: 56193196487adcb469ee1c7c2c27647e, type: 3}
+  rock: {fileID: 842569441493152713, guid: 7ffec6041a3a5554c9b7210cf14a2417, type: 3}
+  Bosspos: {x: 0, y: 0, z: 25}
+>>>>>>> Stashed changes
 --- !u!4 &2118971557
 Transform:
   m_ObjectHideFlags: 0
