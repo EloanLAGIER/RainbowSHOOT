@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4db186eec1d36c4dbbb9c8ca0ef8d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 1
+  life: 180
   vitesse: 4
   hit: {fileID: 6810744636589240573, guid: 97a3778b9c1790a41be22839efe817da, type: 3}
   tir: {fileID: 7325480869001692470, guid: 00ffd3cdd915f8646b5497ea6495bdcb, type: 3}

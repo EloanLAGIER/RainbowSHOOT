@@ -74,6 +74,7 @@ public class SpaceShip : MonoBehaviour
     public AudioSource gronade;
     public AudioClip diamRando;
     public AudioClip diamPepous;
+    public AudioSource RamasseGrenade;
 
     // Start is called before the first frame update
     void Start()
@@ -276,6 +277,7 @@ public class SpaceShip : MonoBehaviour
 
             if (nbrGrenade + 1 <= GrenadeMax)
             {
+                RamasseGrenade.Play();
                 nbrGrenade += 1;
                 nbrGrenad.text = nbrGrenade.ToString();
                 Destroy(c.gameObject);

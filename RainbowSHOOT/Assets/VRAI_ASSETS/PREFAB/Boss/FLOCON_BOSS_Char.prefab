@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: {fileID: 6810744636589240573, guid: 97a3778b9c1790a41be22839efe817da, type: 3}
-  vie: 0
+  vie: 500
   tirB: {fileID: 6928770152165842629}
   touche: {fileID: 3445875984736211290}
   tir: {fileID: 3180356857567372215, guid: aba6bc1c0ef6c7248ad4dfc8051d8a12, type: 3}

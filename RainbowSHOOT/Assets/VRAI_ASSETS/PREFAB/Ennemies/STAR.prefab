@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d130f10ff40ec6b4090ddf6176cb4d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 1
+  life: 80
   vitesse: 5
   hit: {fileID: 2936045129582972310, guid: d855fdb98d2685541a5d065f8f5f32b3, type: 3}
   tir: {fileID: 2308967657878775376, guid: 1f1fdb42de7916d40a34c19fb7992f41, type: 3}

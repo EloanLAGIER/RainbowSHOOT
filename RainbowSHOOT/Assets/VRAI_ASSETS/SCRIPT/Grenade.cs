@@ -8,6 +8,8 @@ public class Grenade : MonoBehaviour
     public float vitesse = 10;
     public float timeurExplose;
 
+    public AudioSource explosionSOUND;
+
     bool once;
 
     public GameObject explosion;
@@ -38,6 +40,7 @@ public class Grenade : MonoBehaviour
         {
             if (!once)
             {
+                explosionSOUND.Play();
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 once = true;
 
