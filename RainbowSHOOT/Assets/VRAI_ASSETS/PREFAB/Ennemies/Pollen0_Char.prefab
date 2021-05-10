@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
-  vitesse: 25
+  vitesse: 15
   hit: {fileID: 6325720316606425881, guid: a4addc3cb5640554fa43e6da7754d5f5, type: 3}
   tir: {fileID: 3180356857567372215, guid: 47dc4df028859db47b483c669a549d53, type: 3}
   position: {x: 0, y: 0, z: 0}
