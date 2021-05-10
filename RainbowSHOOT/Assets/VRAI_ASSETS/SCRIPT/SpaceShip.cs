@@ -109,7 +109,8 @@ public class SpaceShip : MonoBehaviour
         position = transform.position;
         position.z += Time.deltaTime * Input.GetAxis("Vertical") * vitesse;
         position.x += Time.deltaTime * Input.GetAxis("Horizontal") * vitesse;
-        position = new Vector3(Mathf.Clamp(position.x, -4f, 4f), position.y, Mathf.Clamp(position.z, -1.5f, 6f));
+        position.z = Mathf.Clamp(position.z, -1.5f, 6f);
+        position = new Vector3(Mathf.Clamp(position.x, -4f*((position.z/7.5f)+1.2f), 4f * ((position.z / 7.5f) + 1.2f)), position.y, position.z);
         transform.position = position;
 
 

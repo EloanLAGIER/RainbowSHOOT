@@ -451,7 +451,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.95
+  m_Radius: 1.05
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4196942953838443198
 MonoBehaviour:
@@ -473,8 +473,8 @@ MonoBehaviour:
   timeur: 0
   divise: 0
   hit: {fileID: 6325720316606425881, guid: a4addc3cb5640554fa43e6da7754d5f5, type: 3}
-  tirB: {fileID: 0}
-  touche: {fileID: 0}
+  tirB: {fileID: -7064525659355677887}
+  touche: {fileID: 1927592270618305022}
 --- !u!82 &1927592270618305022
 AudioSource:
   m_ObjectHideFlags: 0
@@ -485,7 +485,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b25953af220eb6c4ba651777045ac194, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.268
   m_Pitch: 1
@@ -581,7 +581,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ad27232b6b1162541a8db78596e3069a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.239
   m_Pitch: 1

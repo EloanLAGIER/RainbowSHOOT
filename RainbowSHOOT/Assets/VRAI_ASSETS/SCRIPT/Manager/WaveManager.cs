@@ -135,7 +135,7 @@ public class WaveManager : MonoBehaviour
     {
         ennemies += 1;
         int rand = Random.Range(0, 2);
-        rand = 1;
+        rand = 0;
         if (niveauCount == 1)
         {
             if (rand == 0)
