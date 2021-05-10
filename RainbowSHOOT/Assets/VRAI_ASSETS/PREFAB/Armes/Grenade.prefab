@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vitesse: 10
   timeurExplose: 0
-  explosionSOUND: {fileID: 0}
+  explosionSOUND: {fileID: 6377638562568623606}
   explosion: {fileID: 5141305787815338937, guid: 9d6c9538429b3364690392fd528bb4dc, type: 3}
 --- !u!82 &6377638562568623606
 AudioSource:
