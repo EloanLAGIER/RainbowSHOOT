@@ -34,6 +34,10 @@ PrefabInstance:
       value: 0.9529412
       objectReference: {fileID: 0}
     - target: {fileID: 553729516727409097, guid: 47dc4df028859db47b483c669a549d53, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 553729516727409097, guid: 47dc4df028859db47b483c669a549d53, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.a
       value: 0.827451
       objectReference: {fileID: 0}
