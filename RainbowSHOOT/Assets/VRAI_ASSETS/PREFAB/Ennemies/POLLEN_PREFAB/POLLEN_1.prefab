@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: POLLEN_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1911324073171895383, guid: f6c7eadecd0a1d24a949e2780fe88ba4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2093288045803675319, guid: f6c7eadecd0a1d24a949e2780fe88ba4, type: 3}
       propertyPath: m_RootOrder
       value: 0

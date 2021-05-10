@@ -10,10 +10,12 @@ public class MeduseBoss : BOSS
     public PathCreator path;
     public float timeur;
     public Vector3 position;
+    public int nbmeduse;
     // Start is called before the first frame update
     void Start()
     {
         timeur = 0;
+
         
     }
 
@@ -21,10 +23,18 @@ public class MeduseBoss : BOSS
     void Update()
     {
         timeur += Time.deltaTime;
-        if (timeur > 10f)
+        if (timeur > 4f)
         {
-            Meduse g =Instantiate(meduse, position, Quaternion.identity);
-            g.pathCreator = path;
+            if (FindObjectsOfType<Meduse>().Length < 10)
+            {
+                FindObjectOfType<WaveManager>().ennemies += 1;
+                Meduse g = Instantiate(meduse, path.path.GetPointAtDistance(path.path.length / 2), Quaternion.Euler(90, 0, 0));
+                g.pathCreator = path;
+                g.distanceTravelled = path.path.length / 2;
+            }
+            timeur = 0f;
+
+
 
         }
     }

@@ -135,7 +135,7 @@ public class WaveManager : MonoBehaviour
     {
         ennemies += 1;
         int rand = Random.Range(0, 2);
-        rand = 0;
+        rand = 1;
         if (niveauCount == 1)
         {
             if (rand == 0)
@@ -164,12 +164,12 @@ public class WaveManager : MonoBehaviour
         {
             if (rand == 0)
             {
-                Instantiate(meduse, Bosspos, Quaternion.identity);
+                Instantiate(meduse, Bosspos, Quaternion.Euler(90, 0, 0));
                 
             }
             else
             {
-                Instantiate(rock, Bosspos, Quaternion.identity);
+                Instantiate(rock, Bosspos, Quaternion.Euler(0, 180, 0));
 
             }
 
@@ -223,6 +223,7 @@ public class WaveManager : MonoBehaviour
         if (niveauCount == 2)
         {
             int rand = Random.Range(0, 2);
+            rand = 1;
             if (rand == 0)
             {
                 for (int i = 0; i < 5; i++)
