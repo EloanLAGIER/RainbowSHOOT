@@ -5532,8 +5532,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08935418ce43a0749aee43e5fe2552e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hit: {fileID: 0}
   vie: 0
-  meduse: {fileID: 0}
+  tirB: {fileID: 0}
+  touche: {fileID: 0}
+  meduse: {fileID: 1784267097054706972, guid: 5a7c21318ad7bc641bb64850c0c6cb80, type: 3}
   path: {fileID: 0}
   timeur: 0
   position: {x: 0, y: 0, z: 0}

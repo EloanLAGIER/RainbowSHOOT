@@ -44,7 +44,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286658597457132359}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 25453505518037c40a40f81281b0ed11, type: 2}
   m_CullingMode: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37fcca1ed843b34cb7de4e8b3480fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 20
+  life: 120
   vitesse: 1
   hit: {fileID: 3153745186878302511, guid: 6c79608e495bba042a81f7fdeff677ff, type: 3}
   tir: {fileID: 8465898248048776679, guid: 17cdd81224c4a9c44bfa493cc163d0ca, type: 3}
@@ -306,7 +306,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805957607623453064}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

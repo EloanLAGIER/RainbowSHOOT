@@ -254,7 +254,7 @@ public class WaveManager : MonoBehaviour
         if (niveauCount == 3)
         {
             int rand = Random.Range(0, 2);
-            rand = 1;
+            rand = 0;
             if (rand == 0)
             {
                 for (int i = 0; i < 5; i++)

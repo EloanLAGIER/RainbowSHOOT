@@ -15,7 +15,7 @@ public class Rock : Alien
     // Update is called once per frame
     void Update()
     {
-        if (life < 0)
+        if (life > 0)
         {
 
             position = transform.position;
