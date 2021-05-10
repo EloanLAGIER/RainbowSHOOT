@@ -8,6 +8,8 @@ public class Pollen : Alien
 
     public float tempsperso;
 
+    public AudioSource hitS;
+    public AudioSource shootS;
 
 
     public float tempspersoUp;
@@ -16,7 +18,7 @@ public class Pollen : Alien
     // Start is called before the first frame update
     void Start()
     {
-        tempsperso = Random.Range(4, 6f);
+        tempsperso = Random.Range(0.3f, 0.7f);
         tempspersoUp = 0f;
     }
 
@@ -51,7 +53,7 @@ public class Pollen : Alien
             {
 
                 tempspersoUp = 0f;
-
+                shootS.Play();
                 Instantiate(tir, transform.position, Quaternion.identity);
 
             }
@@ -76,6 +78,7 @@ public class Pollen : Alien
         {
             if (c.gameObject.tag == "TirVaisseau")
             {
+                hitS.Play();
                 GameObject g = Instantiate(hit, transform.position, Quaternion.identity);
                 StartCoroutine(DestroyHit(g));
                 life -= c.gameObject.GetComponent<TirVaisseau>().valeur;

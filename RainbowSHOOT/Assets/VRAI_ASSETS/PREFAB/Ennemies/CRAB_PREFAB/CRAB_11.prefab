@@ -68,6 +68,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1784267097054706972, guid: 68b431bd309662746b96a24b265ee09a, type: 3}
+      propertyPath: life
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784267097054706972, guid: 68b431bd309662746b96a24b265ee09a, type: 3}
+      propertyPath: vitesse
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4879716246346406836, guid: 68b431bd309662746b96a24b265ee09a, type: 3}
       propertyPath: m_Name
       value: CRAB_11

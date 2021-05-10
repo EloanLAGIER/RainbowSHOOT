@@ -20,9 +20,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 689311866, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.57757
+      objectReference: {fileID: 0}
+    - target: {fileID: 689311866, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.57757
+      objectReference: {fileID: 0}
+    - target: {fileID: 689311866, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.57757
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089321826, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.50107
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089321826, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.50107
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089321826, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.50107
+      objectReference: {fileID: 0}
     - target: {fileID: 3138406106391090661, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138406106391090661, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.39586
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138406106391090661, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.39586
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138406106391090661, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.39586
       objectReference: {fileID: 0}
     - target: {fileID: 3138406106391090661, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,6 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -3197972295112871255, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
+    - {fileID: 5123799164912615259, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 409448752f3bc3b4993c9ae7aeca9485, type: 3}
 --- !u!1 &6350068598378170340 stripped
 GameObject:

@@ -24,6 +24,7 @@ public class BOSSNymph : BOSS
         int rand = Random.Range(5, 15);
         for (int i = 0; i <= rand; i++)
         {
+            tirB.Play();
             Instantiate(tir, transform.position, Quaternion.identity);
         }
     }

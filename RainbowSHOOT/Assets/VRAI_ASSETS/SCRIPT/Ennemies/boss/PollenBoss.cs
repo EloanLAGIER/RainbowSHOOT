@@ -15,6 +15,10 @@ public class PollenBoss : MonoBehaviour
     public float timeur;
 
     public bool divise;
+
+    public GameObject hit;
+    public AudioSource tirB;
+    public AudioSource touche;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +63,8 @@ public class PollenBoss : MonoBehaviour
             vie -= 12;
             if (vie < 0)
             {
+                Instantiate(hit, collision.transform.position, Quaternion.identity);
+                touche.Play();
                 if ((etage > 0) && (!divise))
                 {
                     divise = true;
@@ -68,7 +74,7 @@ public class PollenBoss : MonoBehaviour
                     b.transform.localScale = transform.localScale * 0.75f;
                     b.GetComponent<PollenBoss>().etage -= 1;
                     
-                    b.GetComponent<PollenBoss>().vitesse *= 2f;
+                    b.GetComponent<PollenBoss>().vitesse += 2f;
                     b = Instantiate(b, transform.position, Quaternion.identity);
                     b.GetComponent<PollenBoss>().sens = -b.GetComponent<PollenBoss>().sens;
                     vie = -1;

@@ -20,7 +20,8 @@ public class Meduse : Alien
 
     public float tempsperso;
 
-
+    public AudioSource hitSound;
+    public AudioSource tirB;
 
     public float tempspersoUp;
     // Start is called before the first frame update
@@ -30,11 +31,10 @@ public class Meduse : Alien
         from = new Vector3(180f, 0, 0);
         timeCount = 0f;
         rotate = false;
-        life = 12;
-        vitesse = 1f;
-        tempsperso = Random.Range(4, 6f);
+
+        tempsperso = Random.Range(1.5f, 3f);
         tempspersoUp = 0f;
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -45,13 +45,13 @@ public class Meduse : Alien
             position = transform.position;
 
 
-            if (transform.position.y != 0f)
+            if (transform.position.y != 0)
             {
-                position.y -= Time.deltaTime;
+                position.y -= Time.deltaTime * vitesse;
 
-                if (transform.position.y < 0f)
+                if (transform.position.y < 0)
                 {
-                    position.y = 0f;
+                    position.y = 0;
                 }
                 transform.position = position;
                 return;
@@ -61,14 +61,16 @@ public class Meduse : Alien
             tempspersoUp += Time.deltaTime;
             if (tempspersoUp >= tempsperso)
             {
+
                 anim.SetTrigger("shoot");
+                StartCoroutine(TirBoule());
                 tempspersoUp = 0f;
                 rotate = true;
             }
 
 
             distanceTravelled += vitesse * Time.deltaTime;
-
+            
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
 
             if (rotate)
@@ -107,9 +109,18 @@ public class Meduse : Alien
 
     }
 
-    public void TirBoule()
+
+    public IEnumerator TirBoule()
     {
-        Instantiate(tir, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(.5f);
+        for (int i = 0; i < 8; i++)
+        {
+            tirB.Play();
+            Instantiate(tir, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        
     }
 
     void OnCollisionEnter(Collision c)
@@ -118,6 +129,7 @@ public class Meduse : Alien
         {
             if (c.gameObject.tag == "TirVaisseau")
             {
+                hitSound.Play();
                 Instantiate(hit, transform.position, Quaternion.identity);
                 life -= c.gameObject.GetComponent<TirVaisseau>().valeur;
                 Scorehit();

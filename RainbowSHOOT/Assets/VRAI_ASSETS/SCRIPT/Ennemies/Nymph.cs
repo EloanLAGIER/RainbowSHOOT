@@ -6,6 +6,8 @@ public class Nymph : Alien
 {
     public Animator anim;
 
+    public AudioSource hitSound;
+    public AudioSource shootSound;
     public float lasthit;
     // Start is called before the first frame update
     void Start()
@@ -55,9 +57,12 @@ public class Nymph : Alien
         {
             if (c.gameObject.tag == "TirVaisseau")
             {
+                hitSound.Play();
 
-                if (Time.time > lasthit + 2)
+                if (Time.time > lasthit + 5f)
                 {
+
+                    
                     GameObject g = Instantiate(hit, transform.position, Quaternion.identity);
                     StartCoroutine(DestroyHit(g));
                     lasthit = Time.time;
@@ -66,7 +71,8 @@ public class Nymph : Alien
                     Destroy(c.gameObject);
 
                     anim.SetTrigger("hit");
-                    int rand = Random.Range(5, 15);
+                    int rand = Random.Range(3, 7);
+                    shootSound.Play();
                     for (int i = 0; i <= rand; i++)
                     {
                         Instantiate(tir, transform.position, Quaternion.identity);
@@ -77,6 +83,7 @@ public class Nymph : Alien
                     int rando = Random.Range(0, 10);
                     if (rando == 5)
                     {
+                       
                         Instantiate(dropGrenade, transform.position, Quaternion.identity);
                     }
 

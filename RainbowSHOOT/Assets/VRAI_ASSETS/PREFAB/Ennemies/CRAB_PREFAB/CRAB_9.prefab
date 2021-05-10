@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1784267097054706972, guid: 68b431bd309662746b96a24b265ee09a, type: 3}
+      propertyPath: life
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784267097054706972, guid: 68b431bd309662746b96a24b265ee09a, type: 3}
+      propertyPath: vitesse
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4879716246346406836, guid: 68b431bd309662746b96a24b265ee09a, type: 3}
       propertyPath: m_Name
       value: CRAB_9
@@ -59,6 +67,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 66efba8e6393d5442a2ede1128f9d311, type: 2}
+    - target: {fileID: 5895740048009005372, guid: 68b431bd309662746b96a24b265ee09a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816210253780837681, guid: 68b431bd309662746b96a24b265ee09a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68b431bd309662746b96a24b265ee09a, type: 3}
 --- !u!4 &5546210766678968590 stripped

@@ -48,6 +48,8 @@ public class WaveManager : MonoBehaviour
     public GameObject rock;
 
     public Vector3 Bosspos;
+    public Vector3 BossPos2;
+    public Vector3 BossPos3;
     // Start is called before the first frame update
     void Start()
     {
@@ -133,7 +135,7 @@ public class WaveManager : MonoBehaviour
     {
         ennemies += 1;
         int rand = Random.Range(0, 2);
-        rand = 0;
+        rand = 1;
         if (niveauCount == 1)
         {
             if (rand == 0)
@@ -150,17 +152,20 @@ public class WaveManager : MonoBehaviour
             if (rand == 0)
             {
                 Instantiate(nymph, Bosspos, Quaternion.identity);
+                Invoke("BossNymph2", .66f);
+                Invoke("BossNymph3", 1.33f);
             }
             else
             {
                 Instantiate(pollen, Bosspos, Quaternion.identity);
             }
         }
-        if (niveauCount == 2)
+        if (niveauCount == 3)
         {
             if (rand == 0)
             {
                 Instantiate(meduse, Bosspos, Quaternion.identity);
+                
             }
             else
             {
@@ -170,7 +175,16 @@ public class WaveManager : MonoBehaviour
 
         }
     }
-            void GenerateNewWave()
+    public void BossNymph2()
+    {
+        Instantiate(nymph, BossPos2, Quaternion.identity);
+    }
+
+    public void BossNymph3()
+    {
+        Instantiate(nymph, BossPos3, Quaternion.identity);
+    }
+    void GenerateNewWave()
     {
 
         if (niveauCount == 1)
@@ -240,7 +254,7 @@ public class WaveManager : MonoBehaviour
         if (niveauCount == 3)
         {
             int rand = Random.Range(0, 2);
-
+            rand = 1;
             if (rand == 0)
             {
                 for (int i = 0; i < 5; i++)
