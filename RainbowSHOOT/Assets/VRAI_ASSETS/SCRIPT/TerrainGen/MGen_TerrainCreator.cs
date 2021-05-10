@@ -14,7 +14,7 @@ public class MGen_TerrainCreator : MonoBehaviour
     public Vector3[] vertices;
     int[] triangles;
     Vector2[] uv;
-
+    int link = 0;
 
 
     [Header("BasicMap Generation")]
@@ -22,14 +22,11 @@ public class MGen_TerrainCreator : MonoBehaviour
     public float zSize;
 
     public Texture2D BaseHeigth;  // la doc sur les texture: https://docs.unity3d.com/ScriptReference/Texture.html
-    GameObject AfterMesh;
-    Mesh AfterTilt;
 
-    private MGen_TerrainCreator AftTilt;
 
-    /*private Vector2 fract(Vector2 x) { return x - Mathf.Floor(x); }
+    //private Vector2 fract(Vector2 x) { return x - Mathf.Floor(x); }
     private float fract(float x) { return x - Mathf.Floor(x); }
-    
+    /*
     private Vector2 random2 (Vector2 st)
     {
         st = new Vector2 (Vector2.Dot(st, new Vector2(117.1f, 341.7f)),
@@ -52,7 +49,7 @@ public class MGen_TerrainCreator : MonoBehaviour
     }
     */
 
-
+    public Vector2 TilteNum;
     int resolution; //rester dans le multiple de 125, 62.5,125,250.  50 marche aussi... a eviter les chiffre a virgule... probleme de memoire..
     float xEcart =0;
     float zEcart =0;
@@ -61,7 +58,7 @@ public class MGen_TerrainCreator : MonoBehaviour
 
     //---------------------------------MeshGeneration-Base-------------------------------------------
 
-    public void CreateShape (int Resolution, float Size,Vector3 Coord, Texture2D baseHeigth )
+    public void CreateShape (int Resolution, float Size,Vector3 Coord, Texture2D baseHeigth, Vector2 tilteNum)
     {
         //initialisation
         mesh = new Mesh();
@@ -74,19 +71,36 @@ public class MGen_TerrainCreator : MonoBehaviour
         BaseHeigth =  baseHeigth;
 
 
-        vertices = new Vector3[(resolution +1) * (resolution +1)];
+        vertices = new Vector3[((resolution +1) * (resolution +1)) + ((resolution+1)*link)];
         uv = new Vector2[vertices.Length]; // Uv on va a la suite prendre la position du points divisé par la taille du plane pour le garder entre 0 et  comme un uv :D
         xEcart = xSize / resolution ;
         zEcart =  zSize / resolution;
-        
+
+        Coord.z += (zEcart*tilteNum.y)*link;
 
         //Vertex:
         int i = 0;
-        for (int z=0; z<= resolution; z++)
+        for (int z=0; z<= resolution+link; z++)
         {
             for (int x= 0; x<= resolution; x++)
             {
-                uv[i] = new Vector2((float)x / (float)resolution, (float)z / (float)resolution)*1;  //la precision du float est utile dans les cas ou deux integer sont divisé car il ne donnerai pas la bonn valeur (sans les .000014 ect...
+
+                float linc = z + (resolution - tilteNum.y);
+                linc = linc - (resolution+1) * Mathf.Floor( linc/ (resolution+1));
+                //linc = resolution + z;
+                //if (tilteNum.y == 1) { Debug.Log(linc); }
+
+                uv[i] = new Vector2((float)x / (float)resolution, (linc )/ ((float)resolution))*1;  //la precision du float est utile dans les cas ou deux integer sont divisé car il ne donnerai pas la bonn valeur (sans les .000014 ect...
+                /*if (tilteNum.y == 1)
+                {
+                    Debug.Log(z + "num" + uv[i].y);
+                }*/
+
+                /*
+                if (uv[i].y > 1) { uv[i].y = fract(uv[i].y);
+                    Debug.Log("baba"+uv[i].y); }*/
+
+
                 vertices[i] =Coord + new Vector3((float)xEcart * x, 0, zEcart * z);
                 //Debug.Log(vertices[i]);
                 i++;
@@ -96,12 +110,12 @@ public class MGen_TerrainCreator : MonoBehaviour
 
 
         // Triangles:
-        triangles = new int[resolution * resolution * 6];
+        triangles = new int[((link* (resolution)) + resolution * resolution) * 6];
         
         int vert = 0; //defini les numero des point pour le triangle
         uint tris = 0;
 
-        for (int z = 0; z < resolution; z++)
+        for (int z = 0; z < resolution+link; z++)
         {
             for (int x = 0; x < resolution; x++)
             {
@@ -139,9 +153,9 @@ public class MGen_TerrainCreator : MonoBehaviour
     float Ampli;
     float Offset;
     float Expo;
-    public Vector2 TilteNum;
+   
     Vector2 lPass;
-
+    int Count = 0;
 
     public void HeigthDeform(float ampliMed, //medium
         float ampli, //large
@@ -152,10 +166,11 @@ public class MGen_TerrainCreator : MonoBehaviour
         Offset = offset;
         Expo = expo;
         TilteNum = tilteNum;
-       // AftTilt = afterTilt;//.GetComponent<MGen_TerrainCreator>() ;  //assignation du script/componement du tilte suivant.
+        // AftTilt = afterTilt;//.GetComponent<MGen_TerrainCreator>() ;  //assignation du script/componement du tilte suivant.
 
         //Debug.Log(AftTilt.vertices[54]);
-
+        lPass = TilteNum - new Vector2(0, 1);
+        if(lPass.y == -1) { lPass.y = 2; }
 
 
         for (var i = 0; i < vertices.Length; i++)
@@ -163,6 +178,14 @@ public class MGen_TerrainCreator : MonoBehaviour
             //uv[i].x = fract(uv[i].x + Time.deltaTime/15.0f);
 
             //Debug.Log((float)uv[i].x);
+
+            /*           
+                       if (uv[i].x == 0) { lPass = lPass + new Vector2(0, 1); Debug.Log(TilteNum.y + "Pass" + lPass); }
+                       //Debug.Log(TilteNum.y +"Pass"+lPass);
+                       if (lPass.y == 3) { lPass = new Vector2(TilteNum.x, 0); }
+           */
+            //float offs= uv[i].x+ 0.8f;
+            //uv[i].x = offs - 1 * Mathf.Floor(offs / 1);
 
             Vector2 st = uv[i] * new Vector2(BaseHeigth.width, BaseHeigth.height);
             Vector2 l = (uv[i]+TilteNum)  * (new Vector2(BaseHeigth.width, BaseHeigth.height)) ;
@@ -172,15 +195,15 @@ public class MGen_TerrainCreator : MonoBehaviour
 
             //Vector2 s = st * 8.0f;
             //y -= BaseHeigth.GetPixel((int)s.x, (int)s.y).grayscale * 3f;
-            //y -= 100;*/
+            //y -= 100;
             float y = BaseHeigth.GetPixel((int)l.x,(int)l.y).grayscale* Ampli;
 
-            y += BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale * AmpliMed;  //version repeatable medium
+            //y = BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale * AmpliMed;  //version repeatable medium
 
             y = Mathf.Pow(y, Expo);
             y -= Offset;
 
-
+            
 
             //m_Material.SetVector("UvNormal", s);
 
@@ -188,31 +211,25 @@ public class MGen_TerrainCreator : MonoBehaviour
         }
 
 
-        //Some info pour la preparation du movemesh (en deformation y)
-       /* int n = (int)(TilteNum.x + TilteNum.y + 3);
-        if (n <= 9) { AfterTilt = GameObject.Find("terrain_" + n); }
-            else { AfterTilt = null; }
-       */
-        lPass = TilteNum + new Vector2(0,1);
-        if (lPass.y == 3) { lPass = new Vector2(TilteNum.x, 0); }
 
-        
-        //AfterTilt = GameObject.Find("terrain_" + 1);
-        //Vector3 baba = AfterTilt.GetComponent<MeshFilter>().mesh.vertices[50];
-        //AfterMesh = GameObject.Find("terrain_" + 8);
-        //AfterTilt = AfterMesh.GetComponent<MeshFilter>().mesh;
-        
+        lPass = TilteNum;// +  new Vector2(0,1);
+        Count = resolution;  // mystere.... un decalage aussi sur le premier tilte alors qu'il n'y en a pas vraiment... ???
+        //if (lPass.y == 3) { lPass = new Vector2(TilteNum.x, 0); }
+
+
+        if (TilteNum.y != 0) { Count = resolution - (int)TilteNum.y; lPass = TilteNum; }
+
         UpdateMesh();
     }
 
 
     //------------------------------MoveMesh-------------------------------------
 
-    int Count =0;
+    int CountLine = 0;
     int tris = 0;
 
-    decimal lx;
-    decimal ly;
+    //decimal lx; //pour de la precision sur l'uv mais pas necessaire
+    //decimal ly;
 
 
     void MoveMesh()
@@ -223,62 +240,42 @@ public class MGen_TerrainCreator : MonoBehaviour
 
         for (int i = 0; i < vertices.Length; i++) { vertices[i].z -= zEcart;}  //deplacement de 1 pour tous
 
-        int LineMove =( resolution +1) * Count ;
+        int LineMove =( resolution +1) * CountLine ;
 
         float y;
         int n;
-        //Debug.Log(xSize);
-        //Debug.Log(Count);
-        /*
-        if (TilteNum.y < 2)
-        {
-            for (int x = 0; x < resolution + 1; x++) //saut de la ligne en arriere
-            {
-                vertices[LineMove + x].z += zSize + zEcart;
-
-                n = (resolution + 1) + LineMove + x;
-                if (n > AfterTilt.vertices.Length) { n = 0+x; }
-         
-                
-                y = AfterTilt.vertices[n].y;
-
-                //float y = baba.y;// AftTilt.vertices[n].y;
-                //Debug.Log(y);
-
-                //vertices[LineMove + x].y = y;
-            }
-        }
-        */
-
-        //   if (TilteNum.y == 2)
+    
 
         for (int x = 0; x < resolution + 1; x++) //saut de la ligne en arriere
         {
-            vertices[LineMove + x].z += zSize + zEcart;
+            vertices[LineMove + x].z += zSize + zEcart +(zEcart*link);
 
+            /*
             //lPass.y = 0;
-            /*n = (resolution + 1) + LineMove + x;
+            n = (resolution + 1) + LineMove + x;
             if (n >= uv.Length) { n = 0 + x; }*/
-
+            
             st = uv[LineMove + x] * new Vector2(BaseHeigth.width, BaseHeigth.height);
             l = (lPass + uv[LineMove + x]) * (new Vector2(BaseHeigth.width, BaseHeigth.height))/3;//ici pour la taille d'uv /3);
-            /*l = lPass + uv[LineMove+x];
-            lx = (decimal)(l.x * BaseHeigth.width )/ 3;
-            ly = (decimal)(l.y * BaseHeigth.height )/ 3;*/
+            //l = lPass + uv[LineMove+x];
+            //lx = (decimal)(l.x * BaseHeigth.width )/ 3;
+            //ly = (decimal)(l.y * BaseHeigth.height )/ 3;
             y = BaseHeigth.GetPixel((int)l.x, (int)l.y).grayscale * Ampli;
-            y += BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale * AmpliMed;
+            //y = BaseHeigth.GetPixel((int)st.x, (int)st.y).grayscale * AmpliMed;
 
             y = Mathf.Pow(y, Expo);
             vertices[LineMove + x].y = y - Offset;
+            
 
 
-            //Debug.Log(lPass + uv[LineMove + x]);
+            //vertices[LineMove + x].y = uv[LineMove + x].y*150;
+            //Debug.Log(uv[LineMove + x]);
         }
         
         
         int vert = 0;
         //Debug.Log(LineMove + "line");
-        int vert2 = ((Count+resolution) - (resolution+1) * ((Count+resolution) / (resolution+1)))   *(resolution+1); //modulo valeur ligne avant celle deplace
+        int vert2 = ((CountLine+resolution) - (resolution+1) * ((CountLine +resolution) / (resolution+1)))   *(resolution+1); //modulo valeur ligne avant celle deplace
 
         
         int[] trianglesdel = triangles;
@@ -299,11 +296,13 @@ public class MGen_TerrainCreator : MonoBehaviour
 
                 }
         if(tris == triangles.Length) { tris = 0; }
-        
-        
 
+
+        CountLine += 1;
         Count += 1;
-        if (Count == resolution+1) { Count = 0; lPass += new Vector2(0f, 1f); }
+        if (CountLine == resolution+1+link) { CountLine = 0; }
+
+        if (Count == resolution+1+link) { Count = 0; lPass += new Vector2(0f, 1f); }
         if (lPass.y == 3f) { lPass.y = 0; }
 
         //Debug.Log(lPass.y);

@@ -69,7 +69,7 @@ public class MGen_HugeWorld : MonoBehaviour
 
                     TerrainCrea.CreateShape(125, Size,
                         new Vector3(Size * x, 0, Size * z) + Pos,
-                        baseHeigth);
+                        baseHeigth, TilteNum[i]);
 
 
                     TerrainCrea.HeigthDeform(AmpliMed, Ampli,
@@ -103,12 +103,14 @@ public class MGen_HugeWorld : MonoBehaviour
 
             TerrainCrea.CreateShape(170, Size,
                             new Vector3(Size, 0, Size*i) + Pos,
-                            baseHeigth);
+                            baseHeigth, TilteNum[i]);
 
+         //   TerrainCrea.UpdateMesh();
 
+            
             TerrainCrea.HeigthDeform(AmpliMed, Ampli,
                 Offset, Expo, TilteNum[i]);
-
+            
             speed = 0.02f;
             TerrainCrea.MeshLaunch(speed);
         }
